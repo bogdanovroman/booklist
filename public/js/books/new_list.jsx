@@ -81,7 +81,7 @@ export default class NewList extends React.Component {
 
                     </div>
                     <div className="uk-card-footer uk-text-right">
-                        <button className="uk-button uk-button-default uk-margin-right" onClick={this.backToListsHandler.bind(this)}>охрана отмена :D</button>
+                        <button className="uk-button uk-button-default uk-margin-right" type="button" onClick={this.backToListsHandler.bind(this)}>охрана отмена :D</button>
                         <button className="uk-button uk-button-primary" type="submit">готово</button>
                     </div>
                 </form>
