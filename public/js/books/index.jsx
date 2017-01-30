@@ -47,12 +47,12 @@ class Container extends React.Component {
           if (response.status === 'connected') {
               FB.api("/me", function(response) {
                   if (response && !response.error) {
-                    console.log(response);
                       user.id   = response.id;
                       user.name = response.name;
                   }
+                  console.log(response.id[0]);
               });
-              FB.api("/" + response.authResponse.userID + "/picture", function(response) {
+              FB.api("/me/picture", function(response) {
                   if (response && !response.error) {
                       user.url = response.data.url;
                   }
@@ -64,6 +64,8 @@ class Container extends React.Component {
           this.setState({
             user : user,
             logged : true
+          }, function(){
+            this.forceUpdate();
           })
       }.bind(this), {scope: 'public_profile,email'});
     }
