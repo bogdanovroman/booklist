@@ -45,8 +45,9 @@ class Container extends React.Component {
       FB.login(function(response) {
           var user = {};
           if (response.status === 'connected') {
-              FB.api("/" + response.authResponse.userID, function(response) {
+              FB.api("/me", function(response) {
                   if (response && !response.error) {
+                    console.log(response);
                       user.id   = response.id;
                       user.name = response.name;
                   }
