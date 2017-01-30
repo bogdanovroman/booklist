@@ -110,23 +110,28 @@
 	                if (response.status === 'connected') {
 	                    FB.api("/" + response.authResponse.userID, function (response) {
 	                        if (response && !response.error) {
-	                            this.setState({
-	                                user_id: response.id,
-	                                user_name: response.name
-	                            });
+	                            userId = response.id;
+	                            userName = response.name;
+	                            console.log(userId, userName);
 	                        }
-	                    }.bind(this));
+	                    });
 	                    FB.api("/" + response.authResponse.userID + "/picture", function (response) {
 	                        if (response && !response.error) {
-	                            this.setState({
-	                                user_url: response.data.url
-	                            });
+	                            UserUrl = response.data.url;
+	                            console.log(UserUrl);
 	                        }
-	                    }.bind(this));
+	                    });
 	                } else if (response.status === 'not_authorized') {
 	                    console.log('The person is logged into Facebook, but not your app.');
 	                }
 	            }, { scope: 'public_profile,email' });
+	            console.log(userId);
+	            this.setState({
+	                user_id: userId,
+	                user_name: userName,
+	                user_url: UserUrl,
+	                logged: true
+	            });
 	        }
 	    }, {
 	        key: 'showDetails',
