@@ -112,19 +112,25 @@
 	                        if (response && !response.error) {
 	                            user.id = response.id;
 	                            user.name = response.name;
-	                            console.log(this.state);
+	                            console.log(user);
 	                        }
 	                    });
 	                    FB.api("/" + response.authResponse.userID + "/picture", function (response) {
 	                        if (response && !response.error) {
 	                            user.url = response.data.url;
+	                            console.log(user);
 	                        }
+	                    });
+	                    this.setState({
+	                        user_id: user.id,
+	                        user_name: user.name,
+	                        user_url: user.url,
+	                        logged: true
 	                    });
 	                } else if (response.status === 'not_authorized') {
 	                    console.log('The person is logged into Facebook, but not your app.');
 	                }
-	            }, { scope: 'public_profile,email' });
-	            this.setState({ user_id: user.id, user_name: user.name, user_url: user.url });
+	            }.bind(this), { scope: 'public_profile,email' });
 	        }
 	    }, {
 	        key: 'showDetails',
@@ -212,8 +218,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_header2.default, { userName: this.state.user_name, userUrl: this.state.user_url }),
-	                ' ',
+	                _react2.default.createElement(_header2.default, { userName: this.state.user_name, userUrl: this.state.user }),
 	                data,
 	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })
 	            );
