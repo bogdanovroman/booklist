@@ -34,17 +34,14 @@ class Container extends React.Component {
                       user.url = response.data.url;
                   }
               });
-              this.setStateUser(user);
+              this.setState({
+                user : user,
+                logged : true
+              })
           } else if (response.status === 'not_authorized') {
               console.log('The person is logged into Facebook, but not your app.');
           }
       }.bind(this), {scope: 'public_profile,email'});
-    }
-    setStateUser (user) {
-      console.log(user);
-      this.setState({
-        user:user
-      })
     }
     showDetails(list) {
         this.setState({show: 'list', list: list})
@@ -95,7 +92,8 @@ class Container extends React.Component {
         }
         return (
             <div>
-                <Header/> {data}
+                <Header user={this.state.user}/>
+                {data}
                 <Modal onClickHandler={this.authHandler.bind(this)}/>
             </div>
         )

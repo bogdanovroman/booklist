@@ -121,19 +121,14 @@
 	                            user.url = response.data.url;
 	                        }
 	                    });
-	                    this.setStateUser(user);
+	                    this.setState({
+	                        user: user,
+	                        logged: true
+	                    });
 	                } else if (response.status === 'not_authorized') {
 	                    console.log('The person is logged into Facebook, but not your app.');
 	                }
 	            }.bind(this), { scope: 'public_profile,email' });
-	        }
-	    }, {
-	        key: 'setStateUser',
-	        value: function setStateUser(user) {
-	            console.log(user);
-	            this.setState({
-	                user: user
-	            });
 	        }
 	    }, {
 	        key: 'showDetails',
@@ -221,8 +216,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_header2.default, null),
-	                ' ',
+	                _react2.default.createElement(_header2.default, { user: this.state.user }),
 	                data,
 	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })
 	            );
@@ -22783,7 +22777,7 @@
 /* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -22809,35 +22803,59 @@
 	    function Header(props) {
 	        _classCallCheck(this, Header);
 
-	        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+
+	        _this.state = {
+	            user: _this.props.user,
+	            logged: _this.props.logged
+	        };
+	        return _this;
 	    }
 
 	    _createClass(Header, [{
-	        key: "render",
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            if (nextProps.user != this.props.user) {
+	                this.setState({ user: nextProps.user });
+	            }
+	            this.forceUpdate();
+	        }
+	    }, {
+	        key: 'render',
 	        value: function render() {
+	            if (this.state.user.length) {
+	                console.log('is user');
+	                var auth = _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    'is user'
+	                );
+	            } else {
+	                var auth = _react2.default.createElement(
+	                    'button',
+	                    { is: true, 'class': 'uk-button uk-button-text', 'uk-toggle': 'target: #modal-example' },
+	                    '\u0432\u043E\u0439\u0442\u0438'
+	                );
+	            }
 	            return _react2.default.createElement(
-	                "nav",
-	                { is: true, "class": "uk-navbar-container uk-margin-bottom", "uk-navbar": true },
+	                'nav',
+	                { is: true, 'class': 'uk-navbar-container uk-margin-bottom', 'uk-navbar': true },
 	                _react2.default.createElement(
-	                    "div",
-	                    { className: "uk-navbar-left" },
+	                    'div',
+	                    { className: 'uk-navbar-left' },
 	                    _react2.default.createElement(
-	                        "a",
-	                        { className: "uk-navbar-item uk-logo", href: "#" },
-	                        _react2.default.createElement("img", { is: true, src: "public/images/open-book.svg", alt: "" })
+	                        'a',
+	                        { className: 'uk-navbar-item uk-logo', href: '#' },
+	                        _react2.default.createElement('img', { is: true, src: 'public/images/open-book.svg', alt: '' })
 	                    )
 	                ),
 	                _react2.default.createElement(
-	                    "div",
-	                    { className: "uk-navbar-right" },
+	                    'div',
+	                    { className: 'uk-navbar-right' },
 	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "uk-navbar-item" },
-	                        _react2.default.createElement(
-	                            "button",
-	                            { is: true, "class": "uk-button uk-button-text", "uk-toggle": "target: #modal-example" },
-	                            "\u0432\u043E\u0439\u0442\u0438"
-	                        )
+	                        'div',
+	                        { className: 'uk-navbar-item' },
+	                        auth
 	                    )
 	                )
 	            );
