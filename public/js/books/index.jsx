@@ -12,39 +12,58 @@ class Container extends React.Component {
         this.state = {
             lists: [],
             show: 'lists',
-            user_id : "",
-            user_name : "",
-            user_url : ""
+            user: {
+              id : "",
+              name : "",
+              url : ""
+            },
         };
     }
+    componentDidMount () {
+      window.fbAsyncInit = function() {
+          FB.init({
+              appId: '592619720942995',
+              xfbml: false,
+              status: true,
+              version: 'v2.8'
+          });
+          FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {
+              return;
+          }
+          js = d.createElement(s);
+          js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    }
     authHandler(){
-      var userId, userName, UserUrl;
       FB.login(function(response) {
+          var user = {};
           if (response.status === 'connected') {
               FB.api("/" + response.authResponse.userID, function(response) {
                   if (response && !response.error) {
-                      userId   = response.id;
-                      userName = response.name;
-                      console.log(userId, userName);
+                      user.id   = response.id;
+                      user.name = response.name;
                   }
               });
               FB.api("/" + response.authResponse.userID + "/picture", function(response) {
                   if (response && !response.error) {
-                      UserUrl = response.data.url;
-                      console.log(UserUrl);
+                      user.url = response.data.url;
                   }
               });
+              this.setState({
+                user : user,
+                logged : true
+              })
           } else if (response.status === 'not_authorized') {
               console.log('The person is logged into Facebook, but not your app.');
           }
-      }, {scope: 'public_profile,email'});
-      console.log(userId);
-      this.setState({
-        user_id : userId,
-        user_name : userName,
-        user_url : UserUrl,
-        logged : true
-      })
+      }.bind(this), {scope: 'public_profile,email'});
     }
     showDetails(list) {
         this.setState({show: 'list', list: list})
@@ -95,7 +114,7 @@ class Container extends React.Component {
         }
         return (
             <div>
-                <Header userName={this.state.user_name} userUrl={this.state.user}/>
+                <Header userName={this.state.user.name} userUrl={this.state.user.url}/>
                 {data}
                 <Modal onClickHandler={this.authHandler.bind(this)}/>
             </div>
