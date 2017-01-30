@@ -12,11 +12,9 @@ class Container extends React.Component {
         this.state = {
             lists: [],
             show: 'lists',
-            user: {
-              id : "",
-              name : "",
-              url : ""
-            }
+            user_id : "",
+            user_name : "",
+            user_url : ""
         };
     }
     authHandler(){
@@ -35,10 +33,9 @@ class Container extends React.Component {
                   }
               });
               this.setState({
-                user : user,
-                logged : true
-              }, function(){
-                console.log(this.state);
+                user_id : user.id,
+                user_name : user.name,
+                user_url : user.url
               })
           } else if (response.status === 'not_authorized') {
               console.log('The person is logged into Facebook, but not your app.');
@@ -94,7 +91,7 @@ class Container extends React.Component {
         }
         return (
             <div>
-                <Header user={this.state.user}/>
+                <Header userName={this.state.user_name} userUrl={this.state.user_url}/>
                 {data}
                 <Modal onClickHandler={this.authHandler.bind(this)}/>
             </div>

@@ -95,11 +95,9 @@
 	        _this.state = {
 	            lists: [],
 	            show: 'lists',
-	            user: {
-	                id: "",
-	                name: "",
-	                url: ""
-	            }
+	            user_id: "",
+	            user_name: "",
+	            user_url: ""
 	        };
 	        return _this;
 	    }
@@ -122,10 +120,9 @@
 	                        }
 	                    });
 	                    this.setState({
-	                        user: user,
-	                        logged: true
-	                    }, function () {
-	                        console.log(this.state);
+	                        user_id: user.id,
+	                        user_name: user.name,
+	                        user_url: user.url
 	                    });
 	                } else if (response.status === 'not_authorized') {
 	                    console.log('The person is logged into Facebook, but not your app.');
@@ -218,7 +215,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_header2.default, { user: this.state.user }),
+	                _react2.default.createElement(_header2.default, { userName: this.state.user_name, userUrl: this.state.user_url }),
 	                data,
 	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })
 	            );
@@ -22808,8 +22805,8 @@
 	        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
 
 	        _this.state = {
-	            user: _this.props.user,
-	            logged: _this.props.logged
+	            user_name: _this.props.userName,
+	            user_url: _this.props.userUrl
 	        };
 	        return _this;
 	    }
@@ -22817,20 +22814,23 @@
 	    _createClass(Header, [{
 	        key: 'componentWillReceiveProps',
 	        value: function componentWillReceiveProps(nextProps) {
-	            if (nextProps.user != this.props.user) {
-	                this.setState({ user: nextProps.user });
+	            if (nextProps.user_name != this.props.user_name) {
+	                this.setState({ user_name: nextProps.user_name });
+	            }
+	            if (nextProps.user_url != this.props.user_url) {
+	                this.setState({ user_url: nextProps.user_url });
 	            }
 	            this.forceUpdate();
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            if (this.state.user.length) {
-	                console.log('is user');
+	            if (this.state.user_name.length > 0) {
+	                console.log(this.state.user_name, ' is user');
 	                var auth = _react2.default.createElement(
 	                    'div',
 	                    null,
-	                    'is user'
+	                    this.state.user_name
 	                );
 	            } else {
 	                var auth = _react2.default.createElement(
