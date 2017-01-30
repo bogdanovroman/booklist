@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <% include partials/head %>
-    </head>
-    <body>
-      <% include partials/header %>
-      <%- body %>
-      <% include partials/footer %>
-      <% include partials/modals %>
-      <script src="bundle.js" charset="utf-8"></script>
-    </body>
+
+<head>
+    <% include partials/head %>
+</head>
+
+<body>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '592619720942995',
+                xfbml: true,
+                version: 'v2.8'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <% include partials/header %>
+        <%- body %>
+            <% include partials/footer %>
+                <% include partials/modals %>
+                    <script src="bundle.js" charset="utf-8"></script>
+                    <script src="public/js/scripts.js" charset="utf-8"></script>
+</body>
+
 </html>
