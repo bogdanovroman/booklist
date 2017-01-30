@@ -137,8 +137,6 @@
 	                if (response.status === 'connected') {
 	                    FB.api("/me", function (response) {
 	                        if (response && !response.error) {
-	                            var data = JSON.parse(response);
-	                            console.log(data);
 	                            user.id = response.id;
 	                            user.name = response.name;
 	                        }
@@ -153,6 +151,7 @@
 	                    console.log('The person is logged into Facebook, but not your app.');
 	                }
 	                console.log(this.state.user);
+	                this.someFunc(user);
 	                // this.setState({
 	                //   user : user,
 	                //   logged : true
@@ -160,6 +159,11 @@
 	                //   this.forceUpdate();
 	                // })
 	            }.bind(this), { scope: 'public_profile,email' });
+	        }
+	    }, {
+	        key: 'someFunc',
+	        value: function someFunc(user) {
+	            console.log(user);
 	        }
 	    }, {
 	        key: 'showDetails',
