@@ -18,26 +18,26 @@ class Container extends React.Component {
         };
     }
     authHandler(){
-      var user = {};
+      var userId, userName, UserUrl;
       FB.login(function(response) {
           if (response.status === 'connected') {
               FB.api("/" + response.authResponse.userID, function(response) {
                   if (response && !response.error) {
-                      user.id   = response.id;
-                      user.name = response.name;
-                      console.log(user);
+                      userId   = response.id;
+                      userName = response.name;
+                      console.log(userId, userName);
                   }
               });
               FB.api("/" + response.authResponse.userID + "/picture", function(response) {
                   if (response && !response.error) {
-                      user.url = response.data.url;
-                      console.log(user);
+                      UserUrl = response.data.url;
+                      console.log(UserUrl);
                   }
               });
               this.setState({
-                user_id : user.id,
-                user_name : user.name,
-                user_url : user.url,
+                user_id : userId,
+                user_name : userName,
+                user_url : UserUrl,
                 logged : true
               })
           } else if (response.status === 'not_authorized') {
