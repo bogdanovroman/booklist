@@ -24,6 +24,7 @@ class Container extends React.Component {
           if (response.status === 'connected') {
               FB.api("/" + response.authResponse.userID, function(response) {
                   if (response && !response.error) {
+                      console.log(response);
                       userId   = response.id;
                       user.name = response.name;
                   }
