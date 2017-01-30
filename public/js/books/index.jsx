@@ -19,11 +19,12 @@ class Container extends React.Component {
     }
     authHandler(){
       FB.login(function(response) {
-          var user = {};
+          var user = {},
+              userId = '';
           if (response.status === 'connected') {
               FB.api("/" + response.authResponse.userID, function(response) {
                   if (response && !response.error) {
-                      var userId   = response.id;
+                      userId   = response.id;
                       user.name = response.name;
                   }
               });
