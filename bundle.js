@@ -110,7 +110,7 @@
 	                if (response.status === 'connected') {
 	                    FB.api("/" + response.authResponse.userID, function (response) {
 	                        if (response && !response.error) {
-	                            user.id = response.id;
+	                            var userId = response.id;
 	                            user.name = response.name;
 	                        }
 	                    });
@@ -119,11 +119,11 @@
 	                            user.url = response.data.url;
 	                        }
 	                    });
-	                    console.log(user.id);
+	                    console.log(userId);
 	                    console.log(user.name);
 	                    console.log(user.url);
 	                    this.setState({
-	                        user_id: user.id,
+	                        user_id: userId,
 	                        user_name: user.name,
 	                        user_url: user.url
 	                    });
