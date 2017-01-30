@@ -164,6 +164,10 @@
 	        key: 'someFunc',
 	        value: function someFunc(user) {
 	            console.log(user);
+	            this.setState({
+	                user: user,
+	                logged: true
+	            });
 	        }
 	    }, {
 	        key: 'showDetails',
