@@ -112,6 +112,7 @@
 	                        if (response && !response.error) {
 	                            user.id = response.id;
 	                            user.name = response.name;
+	                            console.log(this.state);
 	                        }
 	                    });
 	                    FB.api("/" + response.authResponse.userID + "/picture", function (response) {
