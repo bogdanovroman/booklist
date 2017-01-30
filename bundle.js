@@ -110,22 +110,18 @@
 	                if (response.status === 'connected') {
 	                    FB.api("/" + response.authResponse.userID, function (response) {
 	                        if (response && !response.error) {
-	                            userId = response.id;
-	                            userName = response.name;
-	                            console.log(userId, userName);
+	                            this.setState({
+	                                user_id: response.id,
+	                                user_name: response.name
+	                            });
 	                        }
 	                    });
 	                    FB.api("/" + response.authResponse.userID + "/picture", function (response) {
 	                        if (response && !response.error) {
-	                            UserUrl = response.data.url;
-	                            console.log(UserUrl);
+	                            this.setState({
+	                                user_url: response.data.url
+	                            });
 	                        }
-	                    });
-	                    this.setState({
-	                        user_id: userId,
-	                        user_name: userName,
-	                        user_url: UserUrl,
-	                        logged: true
 	                    });
 	                } else if (response.status === 'not_authorized') {
 	                    console.log('The person is logged into Facebook, but not your app.');
@@ -22876,7 +22872,7 @@
 /* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22906,35 +22902,37 @@
 	  }
 
 	  _createClass(Modal, [{
-	    key: "clickHandler",
+	    key: 'clickHandler',
 	    value: function clickHandler() {
+	      var modal = UIkit.modal('#modal-example');
+	      modal.hide();
 	      this.props.onClickHandler();
 	    }
 	  }, {
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "div",
-	        { is: true, id: "modal-example", "uk-modal": true },
+	        'div',
+	        { is: true, id: 'modal-example', 'uk-modal': true },
 	        _react2.default.createElement(
-	          "div",
-	          { className: "uk-modal-dialog" },
-	          _react2.default.createElement("button", { is: true, "class": "uk-modal-close-default", type: "button", "uk-close": true }),
+	          'div',
+	          { className: 'uk-modal-dialog' },
+	          _react2.default.createElement('button', { is: true, 'class': 'uk-modal-close-default', type: 'button', 'uk-close': true }),
 	          _react2.default.createElement(
-	            "div",
-	            { className: "uk-modal-body" },
+	            'div',
+	            { className: 'uk-modal-body' },
 	            _react2.default.createElement(
-	              "p",
-	              { className: "uk-modal-title" },
-	              "\u0421\u043A\u043E\u0440\u043E \u0431\u0443\u0434\u0435\u0442 \u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C"
+	              'p',
+	              { className: 'uk-modal-title' },
+	              '\u0421\u043A\u043E\u0440\u043E \u0431\u0443\u0434\u0435\u0442 \u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C'
 	            ),
 	            _react2.default.createElement(
-	              "button",
-	              { className: "uk-button uk-button-primary uk-width-1-1", onClick: this.clickHandler.bind(this) },
+	              'button',
+	              { className: 'uk-button uk-button-primary uk-width-1-1', onClick: this.clickHandler.bind(this) },
 	              _react2.default.createElement(
-	                "span",
+	                'span',
 	                null,
-	                "facebook"
+	                'facebook'
 	              )
 	            )
 	          )

@@ -23,23 +23,20 @@ class Container extends React.Component {
           if (response.status === 'connected') {
               FB.api("/" + response.authResponse.userID, function(response) {
                   if (response && !response.error) {
-                      userId   = response.id;
-                      userName = response.name;
-                      console.log(userId, userName);
+                      this.setState({
+                        user_id : response.id,
+                        user_name : response.name
+                      })
                   }
               });
               FB.api("/" + response.authResponse.userID + "/picture", function(response) {
                   if (response && !response.error) {
-                      UserUrl = response.data.url;
-                      console.log(UserUrl);
+                      this.setState({
+                        user_url : response.data.url
+                      })
                   }
               });
-              this.setState({
-                user_id : userId,
-                user_name : userName,
-                user_url : UserUrl,
-                logged : true
-              })
+
           } else if (response.status === 'not_authorized') {
               console.log('The person is logged into Facebook, but not your app.');
           }
