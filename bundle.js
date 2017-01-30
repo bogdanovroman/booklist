@@ -121,14 +121,19 @@
 	                            user.url = response.data.url;
 	                        }
 	                    });
+	                    this.setStateUser(user);
 	                } else if (response.status === 'not_authorized') {
 	                    console.log('The person is logged into Facebook, but not your app.');
 	                }
-	                console.log(user);
-	                this.setState({
-	                    user: user
-	                });
 	            }.bind(this), { scope: 'public_profile,email' });
+	        }
+	    }, {
+	        key: 'setStateUser',
+	        value: function setStateUser(user) {
+	            console.log(user);
+	            this.setState({
+	                user: user
+	            });
 	        }
 	    }, {
 	        key: 'showDetails',
