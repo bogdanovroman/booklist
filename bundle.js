@@ -22836,8 +22836,8 @@
 	        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
 
 	        _this.state = {
-	            name: _this.props.name,
-	            url: _this.props.url
+	            name: '',
+	            url: ''
 	        };
 	        return _this;
 	    }

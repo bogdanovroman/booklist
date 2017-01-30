@@ -4,8 +4,8 @@ export default class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name : this.props.name,
-            url : this.props.url
+            name : '',
+            url : ''
         };
     }
     componentWillReceiveProps(nextProps) {
