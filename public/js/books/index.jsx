@@ -47,6 +47,8 @@ class Container extends React.Component {
           if (response.status === 'connected') {
               FB.api("/me", function(response) {
                   if (response && !response.error) {
+                    var data = JSON.parse(response);
+                    console.log(data);
                       user.id   = response.id;
                       user.name = response.name;
                   }
@@ -60,13 +62,13 @@ class Container extends React.Component {
           } else if (response.status === 'not_authorized') {
               console.log('The person is logged into Facebook, but not your app.');
           }
-          console.log(user);
-          this.setState({
-            user : user,
-            logged : true
-          }, function(){
-            this.forceUpdate();
-          })
+          console.log(this.state.user);
+          // this.setState({
+          //   user : user,
+          //   logged : true
+          // }, function(){
+          //   this.forceUpdate();
+          // })
       }.bind(this), {scope: 'public_profile,email'});
     }
     showDetails(list) {
