@@ -12,7 +12,11 @@ class Container extends React.Component {
         this.state = {
             lists: [],
             show: 'lists',
-            user: {}
+            user: {
+              id : "",
+              name : "",
+              url : ""
+            }
         };
     }
     authHandler(){
