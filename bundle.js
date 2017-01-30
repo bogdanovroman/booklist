@@ -119,6 +119,9 @@
 	                            user.url = response.data.url;
 	                        }
 	                    });
+	                    console.log(user.id);
+	                    console.log(user.name);
+	                    console.log(user.url);
 	                    this.setState({
 	                        user_id: user.id,
 	                        user_name: user.name,
