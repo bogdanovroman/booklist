@@ -13,9 +13,9 @@ class Container extends React.Component {
             lists: [],
             show: 'lists',
             user: {
-              id : "",
-              name : "",
-              url : ""
+              "id" : "",
+              "name" : "",
+              "url" : ""
             },
         };
     }
@@ -50,7 +50,7 @@ class Container extends React.Component {
                       user.id   = response.id;
                       user.name = response.name;
                   }
-                  console.log(response.id[0]);
+                  console.log(response.id);
               });
               FB.api("/me/picture", function(response) {
                   if (response && !response.error) {
