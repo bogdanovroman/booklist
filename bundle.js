@@ -94,7 +94,12 @@
 
 	        _this.state = {
 	            lists: [],
-	            show: 'lists'
+	            show: 'lists',
+	            user: {
+	                id: "",
+	                name: "",
+	                url: ""
+	            }
 	        };
 	        return _this;
 	    }
