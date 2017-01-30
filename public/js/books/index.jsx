@@ -56,13 +56,14 @@ class Container extends React.Component {
                       user.url = response.data.url;
                   }
               });
-              this.setState({
-                user : user,
-                logged : true
-              })
           } else if (response.status === 'not_authorized') {
               console.log('The person is logged into Facebook, but not your app.');
           }
+          console.log(user);
+          this.setState({
+            user : user,
+            logged : true
+          })
       }.bind(this), {scope: 'public_profile,email'});
     }
     showDetails(list) {
