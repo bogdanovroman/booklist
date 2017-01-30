@@ -37,6 +37,8 @@ class Container extends React.Component {
               this.setState({
                 user : user,
                 logged : true
+              }, function(){
+                console.log(this.state);
               })
           } else if (response.status === 'not_authorized') {
               console.log('The person is logged into Facebook, but not your app.');
