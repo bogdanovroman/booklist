@@ -11,7 +11,8 @@ class Container extends React.Component {
         super(props);
         this.state = {
             lists: [],
-            show: 'lists'
+            show: 'lists',
+            user: {}
         };
     }
     authHandler(){
@@ -32,6 +33,7 @@ class Container extends React.Component {
           } else if (response.status === 'not_authorized') {
               console.log('The person is logged into Facebook, but not your app.');
           }
+          console.log(user);
           this.setState({
             user: user
           });

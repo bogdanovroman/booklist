@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './card.jsx';
+import 'whatwg-fetch';
 
 export default class AllLists extends React.Component {
     constructor(props) {
