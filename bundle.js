@@ -105,14 +105,12 @@
 	    _createClass(Container, [{
 	        key: 'authHandler',
 	        value: function authHandler() {
+	            var user = {};
 	            FB.login(function (response) {
-	                var user = {},
-	                    userId = '';
 	                if (response.status === 'connected') {
 	                    FB.api("/" + response.authResponse.userID, function (response) {
 	                        if (response && !response.error) {
-	                            console.log(response);
-	                            userId = response.id;
+	                            user.id = response.id;
 	                            user.name = response.name;
 	                        }
 	                    });
@@ -121,18 +119,11 @@
 	                            user.url = response.data.url;
 	                        }
 	                    });
-	                    console.log(userId);
-	                    console.log(user.name);
-	                    console.log(user.url);
-	                    this.setState({
-	                        user_id: userId,
-	                        user_name: user.name,
-	                        user_url: user.url
-	                    });
 	                } else if (response.status === 'not_authorized') {
 	                    console.log('The person is logged into Facebook, but not your app.');
 	                }
-	            }.bind(this), { scope: 'public_profile,email' });
+	            }, { scope: 'public_profile,email' });
+	            this.setState({ user_id: user.id, user_name: user.name, user_url: user.url });
 	        }
 	    }, {
 	        key: 'showDetails',
@@ -221,6 +212,7 @@
 	                'div',
 	                null,
 	                _react2.default.createElement(_header2.default, { userName: this.state.user_name, userUrl: this.state.user_url }),
+	                ' ',
 	                data,
 	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })
 	            );

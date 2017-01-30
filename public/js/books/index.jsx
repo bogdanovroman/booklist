@@ -12,40 +12,31 @@ class Container extends React.Component {
         this.state = {
             lists: [],
             show: 'lists',
-            user_id : "",
-            user_name : "",
-            user_url : ""
+            user_id: "",
+            user_name: "",
+            user_url: ""
         };
     }
-    authHandler(){
-      FB.login(function(response) {
-          var user = {},
-              userId = '';
-          if (response.status === 'connected') {
-              FB.api("/" + response.authResponse.userID, function(response) {
-                  if (response && !response.error) {
-                      console.log(response);
-                      userId   = response.id;
-                      user.name = response.name;
-                  }
-              });
-              FB.api("/" + response.authResponse.userID + "/picture", function(response) {
-                  if (response && !response.error) {
-                      user.url = response.data.url;
-                  }
-              });
-              console.log(userId);
-              console.log(user.name);
-              console.log(user.url);
-              this.setState({
-                user_id : userId,
-                user_name : user.name,
-                user_url : user.url
-              })
-          } else if (response.status === 'not_authorized') {
-              console.log('The person is logged into Facebook, but not your app.');
-          }
-      }.bind(this), {scope: 'public_profile,email'});
+    authHandler() {
+        var user = {}
+        FB.login(function(response) {
+            if (response.status === 'connected') {
+                FB.api("/" + response.authResponse.userID, function(response) {
+                    if (response && !response.error) {
+                        user.id = response.id;
+                        user.name = response.name;
+                    }
+                });
+                FB.api("/" + response.authResponse.userID + "/picture", function(response) {
+                    if (response && !response.error) {
+                        user.url = response.data.url;
+                    }
+                });
+            } else if (response.status === 'not_authorized') {
+                console.log('The person is logged into Facebook, but not your app.');
+            }
+        }, {scope: 'public_profile,email'});
+        this.setState({user_id: user.id, user_name: user.name, user_url: user.url})
     }
     showDetails(list) {
         this.setState({show: 'list', list: list})
@@ -96,8 +87,7 @@ class Container extends React.Component {
         }
         return (
             <div>
-                <Header userName={this.state.user_name} userUrl={this.state.user_url}/>
-                {data}
+                <Header userName={this.state.user_name} userUrl={this.state.user_url}/> {data}
                 <Modal onClickHandler={this.authHandler.bind(this)}/>
             </div>
         )
