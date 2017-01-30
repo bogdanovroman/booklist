@@ -5,9 +5,8 @@ export default class Modal extends React.Component {
         super(props);
     }
     clickHandler(){
-      var modal = UIkit.modal('#modal-example');
-      modal.hide();
       this.props.onClickHandler();
+      UIkit.modal('#modal-example')[0].toggle();
     }
     render() {
         return (

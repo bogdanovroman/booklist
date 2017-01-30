@@ -22904,9 +22904,8 @@
 	  _createClass(Modal, [{
 	    key: 'clickHandler',
 	    value: function clickHandler() {
-	      var modal = UIkit.modal('#modal-example');
-	      modal.hide();
 	      this.props.onClickHandler();
+	      UIkit.modal('#modal-example')[0].toggle();
 	    }
 	  }, {
 	    key: 'render',
