@@ -115,18 +115,18 @@
 	                                user_name: response.name
 	                            });
 	                        }
-	                    });
+	                    }.bind(this));
 	                    FB.api("/" + response.authResponse.userID + "/picture", function (response) {
 	                        if (response && !response.error) {
 	                            this.setState({
 	                                user_url: response.data.url
 	                            });
 	                        }
-	                    });
+	                    }.bind(this));
 	                } else if (response.status === 'not_authorized') {
 	                    console.log('The person is logged into Facebook, but not your app.');
 	                }
-	            }.bind(this), { scope: 'public_profile,email' });
+	            }, { scope: 'public_profile,email' });
 	        }
 	    }, {
 	        key: 'showDetails',
