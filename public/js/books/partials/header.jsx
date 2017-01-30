@@ -4,23 +4,24 @@ export default class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user_name : this.props.userName,
-            user_url : this.props.userUrl
+            name : this.props.name,
+            url : this.props.url
         };
     }
     componentWillReceiveProps(nextProps) {
-        if (nextProps.user_name != this.props.user_name) {
-            this.setState({user_name: nextProps.user_name});
+        if (nextProps.name != this.props.name) {
+            this.setState({name: nextProps.name});
         }
-        if (nextProps.user_url != this.props.user_url) {
-            this.setState({user_url: nextProps.user_url});
+        if (nextProps.url != this.props.url) {
+            this.setState({url: nextProps.url});
         }
         this.forceUpdate();
     }
     render() {
-        if (this.state.user_name.length > 0) {
-          console.log(this.state.user_name, ' is user');
-          var auth = <div>{this.state.user_name}</div>
+        console.log(this.state.name.length);
+        if (this.state.name.length > 0) {
+          console.log(this.state.name, ' is user');
+          var auth = <div>{this.state.name}</div>
         } else {
           var auth = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
         }

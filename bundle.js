@@ -140,7 +140,6 @@
 	                            user.id = response.id;
 	                            user.name = response.name;
 	                        }
-	                        console.log(response.id);
 	                    });
 	                    FB.api("/me/picture", function (response) {
 	                        if (response && !response.error) {
@@ -150,20 +149,12 @@
 	                } else if (response.status === 'not_authorized') {
 	                    console.log('The person is logged into Facebook, but not your app.');
 	                }
-	                console.log(this.state.user);
 	                this.someFunc(user);
-	                // this.setState({
-	                //   user : user,
-	                //   logged : true
-	                // }, function(){
-	                //   this.forceUpdate();
-	                // })
 	            }.bind(this), { scope: 'public_profile,email' });
 	        }
 	    }, {
 	        key: 'someFunc',
 	        value: function someFunc(user) {
-	            console.log(user);
 	            this.setState({
 	                user: user,
 	                logged: true
@@ -255,7 +246,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_header2.default, { userName: this.state.user.name, userUrl: this.state.user.url }),
+	                _react2.default.createElement(_header2.default, { name: this.state.user.name, url: this.state.user.url }),
 	                data,
 	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })
 	            );
@@ -22845,8 +22836,8 @@
 	        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
 
 	        _this.state = {
-	            user_name: _this.props.userName,
-	            user_url: _this.props.userUrl
+	            name: _this.props.name,
+	            url: _this.props.url
 	        };
 	        return _this;
 	    }
@@ -22854,23 +22845,24 @@
 	    _createClass(Header, [{
 	        key: 'componentWillReceiveProps',
 	        value: function componentWillReceiveProps(nextProps) {
-	            if (nextProps.user_name != this.props.user_name) {
-	                this.setState({ user_name: nextProps.user_name });
+	            if (nextProps.name != this.props.name) {
+	                this.setState({ name: nextProps.name });
 	            }
-	            if (nextProps.user_url != this.props.user_url) {
-	                this.setState({ user_url: nextProps.user_url });
+	            if (nextProps.url != this.props.url) {
+	                this.setState({ url: nextProps.url });
 	            }
 	            this.forceUpdate();
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            if (this.state.user_name.length > 0) {
-	                console.log(this.state.user_name, ' is user');
+	            console.log(this.state.name.length);
+	            if (this.state.name.length > 0) {
+	                console.log(this.state.name, ' is user');
 	                var auth = _react2.default.createElement(
 	                    'div',
 	                    null,
-	                    this.state.user_name
+	                    this.state.name
 	                );
 	            } else {
 	                var auth = _react2.default.createElement(
