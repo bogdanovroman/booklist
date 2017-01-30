@@ -68,6 +68,14 @@
 
 	var _new_list2 = _interopRequireDefault(_new_list);
 
+	var _header = __webpack_require__(183);
+
+	var _header2 = _interopRequireDefault(_header);
+
+	var _modal = __webpack_require__(184);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -92,26 +100,44 @@
 	    }
 
 	    _createClass(Container, [{
+	        key: 'authHandler',
+	        value: function authHandler() {
+	            FB.login(function (response) {
+	                var user = {};
+	                if (response.status === 'connected') {
+	                    FB.api("/" + response.authResponse.userID, function (response) {
+	                        if (response && !response.error) {
+	                            user.id = response.id;
+	                            user.name = response.name;
+	                        }
+	                    });
+	                    FB.api("/" + response.authResponse.userID + "/picture", function (response) {
+	                        if (response && !response.error) {
+	                            user.url = response.data.url;
+	                        }
+	                    });
+	                } else if (response.status === 'not_authorized') {
+	                    console.log('The person is logged into Facebook, but not your app.');
+	                }
+	                this.setState({
+	                    user: user
+	                });
+	            }.bind(this), { scope: 'public_profile,email' });
+	        }
+	    }, {
 	        key: 'showDetails',
 	        value: function showDetails(list) {
-	            this.setState({
-	                show: 'list',
-	                list: list
-	            });
+	            this.setState({ show: 'list', list: list });
 	        }
 	    }, {
 	        key: 'setStateToLists',
 	        value: function setStateToLists() {
-	            this.setState({
-	                show: 'lists'
-	            });
+	            this.setState({ show: 'lists' });
 	        }
 	    }, {
 	        key: 'setStateToNewList',
 	        value: function setStateToNewList() {
-	            this.setState({
-	                show: 'newlist'
-	            });
+	            this.setState({ show: 'newlist' });
 	        }
 	    }, {
 	        key: 'render',
@@ -121,15 +147,14 @@
 	                case 'lists':
 	                    data = _react2.default.createElement(
 	                        'div',
-	                        null,
+	                        { className: 'uk-container uk-margin-large-bottom' },
 	                        _react2.default.createElement(
 	                            'h2',
 	                            { className: 'uk-heading-bullet' },
 	                            '\u0412\u0441\u0435 \u0441\u043F\u0438\u0441\u043A\u0438',
 	                            _react2.default.createElement(
 	                                'button',
-	                                { className: 'uk-button uk-button-primary uk-position-center-right',
-	                                    onClick: this.setStateToNewList.bind(this) },
+	                                { className: 'uk-button uk-button-primary uk-position-center-right', onClick: this.setStateToNewList.bind(this) },
 	                                _react2.default.createElement('span', { is: true, 'uk-icon': 'icon: plus' }),
 	                                _react2.default.createElement(
 	                                    'span',
@@ -138,25 +163,19 @@
 	                                )
 	                            )
 	                        ),
-	                        _react2.default.createElement(_all_lists2.default, {
-	                            lists: this.state.lists,
-	                            showDetails: this.showDetails.bind(this)
-	                        })
+	                        _react2.default.createElement(_all_lists2.default, { lists: this.state.lists, showDetails: this.showDetails.bind(this) })
 	                    );
 	                    break;
 	                case 'list':
 	                    data = _react2.default.createElement(
 	                        'div',
-	                        null,
+	                        { className: 'uk-container uk-margin-large-bottom' },
 	                        _react2.default.createElement(
 	                            'h2',
 	                            { className: '' },
 	                            _react2.default.createElement(
 	                                'button',
-	                                { className: 'uk-button uk-button-default',
-	                                    onClick: this.setStateToLists.bind(this),
-	                                    id: 'back-to-lists-btn'
-	                                },
+	                                { className: 'uk-button uk-button-default', onClick: this.setStateToLists.bind(this), id: 'back-to-lists-btn' },
 	                                _react2.default.createElement('span', { is: true, 'uk-icon': 'icon: chevron-left' }),
 	                                _react2.default.createElement(
 	                                    'span',
@@ -171,7 +190,7 @@
 	                case 'newlist':
 	                    data = _react2.default.createElement(
 	                        'div',
-	                        null,
+	                        { className: 'uk-container uk-margin-large-bottom' },
 	                        _react2.default.createElement(
 	                            'h2',
 	                            { className: 'uk-heading-bullet' },
@@ -188,7 +207,14 @@
 	                    );
 	                    break;
 	            }
-	            return data;
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_header2.default, null),
+	                ' ',
+	                data,
+	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })
+	            );
 	        }
 	    }]);
 
@@ -22275,6 +22301,152 @@
 	}(_react2.default.Component);
 
 	exports.default = Book;
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Header = function (_React$Component) {
+	    _inherits(Header, _React$Component);
+
+	    function Header(props) {
+	        _classCallCheck(this, Header);
+
+	        return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+	    }
+
+	    _createClass(Header, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "nav",
+	                { is: true, "class": "uk-navbar-container uk-margin-bottom", "uk-navbar": true },
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "uk-navbar-left" },
+	                    _react2.default.createElement(
+	                        "a",
+	                        { className: "uk-navbar-item uk-logo", href: "#" },
+	                        _react2.default.createElement("img", { is: true, src: "public/images/open-book.svg", alt: "" })
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "uk-navbar-right" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "uk-navbar-item" },
+	                        _react2.default.createElement(
+	                            "button",
+	                            { is: true, "class": "uk-button uk-button-text", "uk-toggle": "target: #modal-example" },
+	                            "\u0432\u043E\u0439\u0442\u0438"
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Header;
+	}(_react2.default.Component);
+
+	exports.default = Header;
+
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Modal = function (_React$Component) {
+	  _inherits(Modal, _React$Component);
+
+	  function Modal(props) {
+	    _classCallCheck(this, Modal);
+
+	    return _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, props));
+	  }
+
+	  _createClass(Modal, [{
+	    key: "clickHandler",
+	    value: function clickHandler() {
+	      this.props.onClickHandler();
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { is: true, id: "modal-example", "uk-modal": true },
+	        _react2.default.createElement(
+	          "div",
+	          { className: "uk-modal-dialog" },
+	          _react2.default.createElement("button", { is: true, "class": "uk-modal-close-default", type: "button", "uk-close": true }),
+	          _react2.default.createElement(
+	            "div",
+	            { className: "uk-modal-body" },
+	            _react2.default.createElement(
+	              "p",
+	              { className: "uk-modal-title" },
+	              "\u0421\u043A\u043E\u0440\u043E \u0431\u0443\u0434\u0435\u0442 \u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C"
+	            ),
+	            _react2.default.createElement(
+	              "button",
+	              { className: "uk-button uk-button-primary uk-width-1-1", onClick: this.clickHandler.bind(this) },
+	              _react2.default.createElement(
+	                "span",
+	                null,
+	                "facebook"
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Modal;
+	}(_react2.default.Component);
+
+	exports.default = Modal;
 
 /***/ }
 /******/ ]);

@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import AllLists from './all_lists.jsx';
 import List from './list.jsx';
 import NewList from './new_list.jsx';
+import Header from './partials/header.jsx';
+import Modal from './partials/modal.jsx';
 
 class Container extends React.Component {
     constructor(props) {
@@ -12,69 +14,82 @@ class Container extends React.Component {
             show: 'lists'
         };
     }
-    showDetails (list) {
-      this.setState({
-        show: 'list',
-        list: list
-      })
+    authHandler(){
+      FB.login(function(response) {
+          var user = {};
+          if (response.status === 'connected') {
+              FB.api("/" + response.authResponse.userID, function(response) {
+                  if (response && !response.error) {
+                      user.id   = response.id;
+                      user.name = response.name;
+                  }
+              });
+              FB.api("/" + response.authResponse.userID + "/picture", function(response) {
+                  if (response && !response.error) {
+                      user.url = response.data.url;
+                  }
+              });
+          } else if (response.status === 'not_authorized') {
+              console.log('The person is logged into Facebook, but not your app.');
+          }
+          this.setState({
+            user: user
+          });
+      }.bind(this), {scope: 'public_profile,email'});
     }
-    setStateToLists () {
-      this.setState({
-        show: 'lists'
-      })
+    showDetails(list) {
+        this.setState({show: 'list', list: list})
     }
-    setStateToNewList () {
-      this.setState({
-        show: 'newlist'
-      })
+    setStateToLists() {
+        this.setState({show: 'lists'})
+    }
+    setStateToNewList() {
+        this.setState({show: 'newlist'})
     }
     render() {
         var data;
         switch (this.state.show) {
             case 'lists':
-                data =
-                <div>
+                data = <div className="uk-container uk-margin-large-bottom">
                     <h2 className="uk-heading-bullet">
-                      Все списки
-                      <button className="uk-button uk-button-primary uk-position-center-right"
-                        onClick={this.setStateToNewList.bind(this)}>
-                        <span is uk-icon="icon: plus"></span>
-                        <span className="uk-margin-small-left">создать</span>
+                        Все списки
+                        <button className="uk-button uk-button-primary uk-position-center-right" onClick={this.setStateToNewList.bind(this)}>
+                            <span is uk-icon="icon: plus"></span>
+                            <span className="uk-margin-small-left">создать</span>
                         </button>
                     </h2>
-                    <AllLists
-                      lists={this.state.lists}
-                      showDetails={this.showDetails.bind(this)}
-                      />
+                    <AllLists lists={this.state.lists} showDetails={this.showDetails.bind(this)}/>
                 </div>
                 break;
             case 'list':
-                data = <div>
+                data = <div className="uk-container uk-margin-large-bottom">
                     <h2 className="">
-                      <button className="uk-button uk-button-default"
-                              onClick={this.setStateToLists.bind(this)}
-                              id="back-to-lists-btn"
-                              >
-                        <span is uk-icon="icon: chevron-left"></span>
-                        <span className="uk-text-middle">назад</span>
+                        <button className="uk-button uk-button-default" onClick={this.setStateToLists.bind(this)} id="back-to-lists-btn">
+                            <span is uk-icon="icon: chevron-left"></span>
+                            <span className="uk-text-middle">назад</span>
                         </button>
                     </h2>
                     <List list={this.state.list}/>
                 </div>
                 break;
-            case 'newlist' :
-            data = <div>
-                <h2 className="uk-heading-bullet">
-                  Создать новый
-                </h2>
-                <NewList backToLists={this.setStateToLists.bind(this)}/>
-            </div>
-            break;
+            case 'newlist':
+                data = <div className="uk-container uk-margin-large-bottom">
+                    <h2 className="uk-heading-bullet">
+                        Создать новый
+                    </h2>
+                    <NewList backToLists={this.setStateToLists.bind(this)}/>
+                </div>
+                break;
             default:
                 data = <div>dasdasd</div>
                 break;
         }
-        return (data)
+        return (
+            <div>
+                <Header/> {data}
+                <Modal onClickHandler={this.authHandler.bind(this)}/>
+            </div>
+        )
     }
 }
 

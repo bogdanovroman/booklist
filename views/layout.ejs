@@ -28,12 +28,9 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
-    <% include partials/header %>
-        <%- body %>
-            <% include partials/footer %>
-                <% include partials/modals %>
-                    <script src="bundle.js" charset="utf-8"></script>
-                    <script src="public/js/scripts.js" charset="utf-8"></script>
+    <%- body %>
+        <script src="bundle.js" charset="utf-8"></script>
+        <script src="public/js/scripts.js" charset="utf-8"></script>
 </body>
 
 </html>
