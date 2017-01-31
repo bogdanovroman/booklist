@@ -5,7 +5,6 @@ import List from './list.jsx';
 import NewList from './new_list.jsx';
 import Header from './partials/header.jsx';
 import Modal from './partials/modal.jsx';
-import update from 'react-addons-update';
 
 class Container extends React.Component {
     constructor(props) {
@@ -14,9 +13,9 @@ class Container extends React.Component {
             lists: [],
             show: 'lists',
             user: {
-              id : "",
-              name : "",
-              url : ""
+              "id" : "",
+              "name" : "",
+              "url" : ""
             },
         };
     }
@@ -59,26 +58,10 @@ class Container extends React.Component {
           } else if (response.status === 'not_authorized') {
               console.log('The person is logged into Facebook, but not your app.');
           }
-          this.setState({
-            user: update(
-              this.state.user, 
-              {
-                name : user.name,
-                id: user.id,
-                url: user.url
-              }
-            )
-          }, function(){
-            console.log(this.state.user);
-          })
-//           this.someFunc(user);
+          const userFromState = this.state.user;
+          console.log(userFromState, ' userFromState');
+          console.log(user, ' user');
       }.bind(this), {scope: 'public_profile,email'});
-    }
-    someFunc(user){
-      this.setState({
-        user : user,
-        logged : true
-      })
     }
     showDetails(list) {
         this.setState({show: 'list', list: list})
