@@ -22888,9 +22888,18 @@
 	            var authTemplate;
 	            if (this.state.isLogged == 'yes') {
 	                authTemplate = _react2.default.createElement(
-	                    'span',
+	                    'div',
 	                    null,
-	                    'Привет, ' + this.state.name
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        this.state.name
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'uk-margin-left' },
+	                        _react2.default.createElement('img', { className: 'uk-border-circle', src: this.state.url, width: '50', height: '50' })
+	                    )
 	                );
 	            } else if (this.state.isLogged == 'no') {
 	                authTemplate = _react2.default.createElement(
