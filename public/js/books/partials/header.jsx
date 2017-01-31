@@ -26,10 +26,10 @@ export default class Header extends React.Component {
         var authTemplate; 
         if (this.state.isLogged == 'yes') {
           authTemplate =  <ul className="uk-navbar-nav">
-                            <li className="uk-text-middle">{this.state.name}</li>
-                            <li className="uk-margin-left">
+                            <li>
+                              <span className="uk-text-middle"> {this.state.name}</span>
                               <img className="uk-border-circle" src={this.state.url} width="50" height="50"/>
-                            </li>
+                             </li>
                         </ul>
         } else if (this.state.isLogged == 'no') {
           authTemplate = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
