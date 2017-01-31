@@ -8,7 +8,7 @@ import Modal from './partials/modal.jsx';
 
 class Container extends React.Component {
     constructor(props) {
-        super(props);
+        super(props); 
         this.state = {
             lists: [],
             show: 'lists',
