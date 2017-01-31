@@ -22,15 +22,15 @@ export default class Header extends React.Component {
         this.forceUpdate();
     }
     render() {
-      
+        
         var authTemplate; 
         if (this.state.isLogged == 'yes') {
-          authTemplate = <div>
-              <div>{this.state.name}</div>
-              <div className="uk-margin-left">
-                <img className="uk-border-circle" src={this.state.url} width="50" height="50"/>
-              </div>
-            </div>
+          authTemplate =  <ul className="uk-navbar-nav">
+                            <li>{this.state.name}</li>
+                            <li className="uk-margin-left">
+                              <img className="uk-border-circle" src={this.state.url} width="50" height="50"/>
+                            </li>
+                        </ul>
         } else if (this.state.isLogged == 'no') {
           authTemplate = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
         } else {

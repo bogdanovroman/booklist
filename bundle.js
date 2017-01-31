@@ -22889,15 +22889,15 @@
 	            var authTemplate;
 	            if (this.state.isLogged == 'yes') {
 	                authTemplate = _react2.default.createElement(
-	                    'div',
-	                    null,
+	                    'ul',
+	                    { className: 'uk-navbar-nav' },
 	                    _react2.default.createElement(
-	                        'div',
+	                        'li',
 	                        null,
 	                        this.state.name
 	                    ),
 	                    _react2.default.createElement(
-	                        'div',
+	                        'li',
 	                        { className: 'uk-margin-left' },
 	                        _react2.default.createElement('img', { className: 'uk-border-circle', src: this.state.url, width: '50', height: '50' })
 	                    )
