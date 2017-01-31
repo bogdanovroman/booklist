@@ -25,6 +25,28 @@ class Container extends React.Component {
               version: 'v2.8'
           });
           FB.AppEvents.logPageView();
+          FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+              this.getUserData(function(dataNameId){
+                this.getUserAvatar(function(dataUrl){
+                  this.setState({
+                    user : {
+                      name : dataNameId.name,
+                      id : dataNameId.id,
+                      url : dataUrl.data.url,
+                    },
+                    logged : true
+                  })
+                }.bind(this))
+              }.bind(this))
+            } else if (response.status === 'not_authorized') {
+              this.setState({
+                logged : false
+              })
+            } else {
+              // the user isn't logged in to Facebook.
+            }
+         }.bind(this));
       };
       (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
