@@ -136,9 +136,9 @@
 	                                user: {
 	                                    name: dataNameId.name,
 	                                    id: dataNameId.id,
-	                                    url: dataUrl.data.url,
-	                                    logged: true
-	                                }
+	                                    url: dataUrl.data.url
+	                                },
+	                                logged: true
 	                            });
 	                        }.bind(this));
 	                    }.bind(this));

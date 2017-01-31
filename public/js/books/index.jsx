@@ -47,8 +47,8 @@ class Container extends React.Component {
                       name : dataNameId.name,
                       id : dataNameId.id,
                       url : dataUrl.data.url,
-                      logged : true
-                    }
+                    },
+                    logged : true
                   })
                 }.bind(this))
               }.bind(this))
