@@ -67,7 +67,7 @@ class Container extends React.Component {
         user : user,
         logged : true
       }, function(){
-        console.log(this.state.user);
+        this.forceUpdate();
       })
     }
     showDetails(list) {
