@@ -22896,31 +22896,9 @@
 	                        _react2.default.createElement(
 	                            'span',
 	                            { className: 'uk-text-middle' },
-	                            ' ',
 	                            this.state.name
 	                        ),
-	                        _react2.default.createElement(
-	                            'a',
-	                            { href: '#' },
-	                            _react2.default.createElement('img', { className: 'uk-border-circle uk-margin-left', src: this.state.url, width: '50', height: '50' })
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'uk-navbar-dropdown' },
-	                            _react2.default.createElement(
-	                                'ul',
-	                                { className: 'uk-nav uk-navbar-dropdown-nav' },
-	                                _react2.default.createElement(
-	                                    'li',
-	                                    null,
-	                                    _react2.default.createElement(
-	                                        'a',
-	                                        { href: '#' },
-	                                        '\u0412\u044B\u0439\u0442\u0438'
-	                                    )
-	                                )
-	                            )
-	                        )
+	                        _react2.default.createElement('img', { className: 'uk-border-circle uk-margin-left', src: this.state.url, width: '50', height: '50' })
 	                    )
 	                );
 	            } else if (this.state.isLogged == 'no') {

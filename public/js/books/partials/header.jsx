@@ -26,15 +26,8 @@ export default class Header extends React.Component {
         if (this.state.isLogged == 'yes') {
           authTemplate =  <ul className="uk-navbar-nav">
                             <li>
-                              <span className="uk-text-middle"> {this.state.name}</span>
-                              <a href="#">
-                                <img className="uk-border-circle uk-margin-left" src={this.state.url} width="50" height="50"/>
-                              </a>
-                              <div className="uk-navbar-dropdown">
-                                  <ul className="uk-nav uk-navbar-dropdown-nav">
-                                      <li><a href="#">Выйти</a></li>
-                                  </ul>
-                              </div>
+                              <span className="uk-text-middle">{this.state.name}</span>
+                              <img className="uk-border-circle uk-margin-left" src={this.state.url} width="50" height="50"/>
                              </li>
                         </ul>
         } else if (this.state.isLogged == 'no') {
