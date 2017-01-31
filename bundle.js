@@ -22626,7 +22626,7 @@
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'uk-card uk-card-default' },
+	                { className: 'uk-card uk-card-default uk-card-hover' },
 	                _react2.default.createElement(
 	                    'form',
 	                    { onSubmit: this.handleSubmit.bind(this) },

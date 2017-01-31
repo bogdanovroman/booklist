@@ -57,7 +57,7 @@ export default class NewList extends React.Component {
     }
     render() {
         return (
-            <div className="uk-card uk-card-default">
+            <div className="uk-card uk-card-default uk-card-hover">
                 <form onSubmit={this.handleSubmit.bind(this)}>
                     <div className="uk-card-header">
                         <div className="uk-margin">
