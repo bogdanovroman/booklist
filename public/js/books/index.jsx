@@ -47,7 +47,7 @@ class Container extends React.Component {
               // the user isn't logged in to Facebook.
             }
          }.bind(this));
-      };
+      }.bind(this);
       (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) {

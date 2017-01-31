@@ -134,7 +134,7 @@
 	                        // the user isn't logged in to Facebook.
 	                    }
 	                }.bind(this));
-	            };
+	            }.bind(this);
 	            (function (d, s, id) {
 	                var js,
 	                    fjs = d.getElementsByTagName(s)[0];
