@@ -22893,7 +22893,7 @@
 	                    { className: 'uk-navbar-nav' },
 	                    _react2.default.createElement(
 	                        'li',
-	                        null,
+	                        { className: 'uk-text-middle' },
 	                        this.state.name
 	                    ),
 	                    _react2.default.createElement(
