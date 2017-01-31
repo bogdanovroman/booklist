@@ -38,31 +38,30 @@ class Container extends React.Component {
     }
     authHandler(){
       FB.login(function(response) {
-          var user = {};
           if (response.status === 'connected') {
-              FB.api("/me", function(response) {
-                  if (response && !response.error) {
-                      user.id   = response.id;
-                      user.name = response.name;
-                    console.log(this, 'component');
-                  }
-              }.bind(this));
-              FB.api("/me/picture", function(response) {
-                  if (response && !response.error) {
-                      user.url = response.data.url;
-                  }
-              });
+              this.getUserData(function(dataNameId){
+                this.getUserAvatar(function(dataUrl){
+                  console.log(dataNameId, dataUrl);
+                })
+              })
           } else if (response.status === 'not_authorized') {
               console.log('The person is logged into Facebook, but not your app.');
           }
-          const userFromState = this.state.user;
-          console.log(userFromState, ' userFromState');
-          console.log(user, ' user');
-          this.state.user.name = user.name;
-          this.state.user.id = user.id;
-          this.state.user.url = user.url;
-          this.forceUpdate();
       }.bind(this), {scope: 'public_profile,email'});
+    }
+    getUserData (callback) {
+      FB.api("/me", function(response) {
+                  if (response && !response.error) {
+                      callback(response);
+                  }
+              });
+    }
+    getUserAvatar (callback) {
+      FB.api("/me/picture", function(response) {
+                  if (response && !response.error) {
+                      callback(response);
+                  }
+              });
     }
     showDetails(list) {
         this.setState({show: 'list', list: list})

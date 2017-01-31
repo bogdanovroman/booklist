@@ -128,31 +128,34 @@
 	        key: 'authHandler',
 	        value: function authHandler() {
 	            FB.login(function (response) {
-	                var user = {};
 	                if (response.status === 'connected') {
-	                    FB.api("/me", function (response) {
-	                        if (response && !response.error) {
-	                            user.id = response.id;
-	                            user.name = response.name;
-	                            console.log(this, 'component');
-	                        }
-	                    }.bind(this));
-	                    FB.api("/me/picture", function (response) {
-	                        if (response && !response.error) {
-	                            user.url = response.data.url;
-	                        }
+	                    this.getUserData(function (dataNameId) {
+	                        this.getUserAvatar(function (dataUrl) {
+	                            console.log(dataNameId, dataUrl);
+	                        });
 	                    });
 	                } else if (response.status === 'not_authorized') {
 	                    console.log('The person is logged into Facebook, but not your app.');
 	                }
-	                var userFromState = this.state.user;
-	                console.log(userFromState, ' userFromState');
-	                console.log(user, ' user');
-	                this.state.user.name = user.name;
-	                this.state.user.id = user.id;
-	                this.state.user.url = user.url;
-	                this.forceUpdate();
 	            }.bind(this), { scope: 'public_profile,email' });
+	        }
+	    }, {
+	        key: 'getUserData',
+	        value: function getUserData(callback) {
+	            FB.api("/me", function (response) {
+	                if (response && !response.error) {
+	                    callback(response);
+	                }
+	            });
+	        }
+	    }, {
+	        key: 'getUserAvatar',
+	        value: function getUserAvatar(callback) {
+	            FB.api("/me/picture", function (response) {
+	                if (response && !response.error) {
+	                    callback(response);
+	                }
+	            });
 	        }
 	    }, {
 	        key: 'showDetails',
