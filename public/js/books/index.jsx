@@ -65,10 +65,11 @@ class Container extends React.Component {
       this.setState({
         user : user,
         logged : true
-      }, function(){
-        this.forceUpdate();
-        this.setStateToLists();
       })
+    }
+    componentDidUpdate(prevProps, prevState) {
+        console.log(prevState, 'prevState');
+        console.log(this.state, 'this.state');
     }
     showDetails(list) {
         this.setState({show: 'list', list: list})

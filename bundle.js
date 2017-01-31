@@ -157,10 +157,13 @@
 	            this.setState({
 	                user: user,
 	                logged: true
-	            }, function () {
-	                this.forceUpdate();
-	                this.setStateToLists();
 	            });
+	        }
+	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate(prevProps, prevState) {
+	            console.log(prevState, 'prevState');
+	            console.log(this.state, 'this.state');
 	        }
 	    }, {
 	        key: 'showDetails',
