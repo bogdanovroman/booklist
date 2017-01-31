@@ -162,8 +162,14 @@
 	    }, {
 	        key: 'componentDidUpdate',
 	        value: function componentDidUpdate(prevProps, prevState) {
-	            console.log(prevState, 'prevState');
-	            console.log(this.state, 'this.state');
+	            var user = this.state.user;
+	            if (user != prevState.user) {
+	                this.setState({
+	                    user: user
+	                }, function () {
+	                    console.log(this.state.user);
+	                });
+	            }
 	        }
 	    }, {
 	        key: 'showDetails',
