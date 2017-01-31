@@ -21,9 +21,8 @@ export default class Header extends React.Component {
         }
         this.forceUpdate();
     }
-    render() {
-        
-        var authTemplate; 
+    render() { 
+        var authTemplate;
         if (this.state.isLogged == 'yes') {
           authTemplate =  <ul className="uk-navbar-nav">
                             <li>
@@ -43,7 +42,7 @@ export default class Header extends React.Component {
                         <img is src="public/images/open-book.svg" alt=""/>
                     </a>
                 </div>
-                <div className="uk-navbar-right"> 
+                <div className="uk-navbar-right">
                     <div className="uk-navbar-item">
                         {authTemplate}
                     </div>

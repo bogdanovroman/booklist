@@ -22885,7 +22885,6 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-
 	            var authTemplate;
 	            if (this.state.isLogged == 'yes') {
 	                authTemplate = _react2.default.createElement(
