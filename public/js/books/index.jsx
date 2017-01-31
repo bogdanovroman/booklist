@@ -61,6 +61,10 @@ class Container extends React.Component {
           const userFromState = this.state.user;
           console.log(userFromState, ' userFromState');
           console.log(user, ' user');
+          this.state.user.name = user.name;
+          this.state.user.id = user.id;
+          this.state.user.url = user.url;
+          this.forceUpdate();
       }.bind(this), {scope: 'public_profile,email'});
     }
     showDetails(list) {
