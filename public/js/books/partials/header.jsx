@@ -6,7 +6,7 @@ export default class Header extends React.Component {
         this.state = {
             name: this.props.name,
             url: this.props.url,
-            logged : this.props.logged
+            isLogged : this.props.isLogged
         };
     }
     componentWillReceiveProps(nextProps) {
@@ -16,17 +16,19 @@ export default class Header extends React.Component {
         if (nextProps.url != this.props.url) {
             this.setState({url: nextProps.url});
         }
-        if (nextProps.logged != this.props.logged) {
-            this.setState({logged: nextProps.logged});
+        if (nextProps.isLogged != this.props.isLogged) {
+            this.setState({isLogged: nextProps.isLogged});
         }
         this.forceUpdate();
     }
     render() {
         var authTemplate;
-        if (this.state.logged) {
-          authTemplate = <span>{'Привет ' + this.state.name}</span>
+        if (this.state.isLogged == 'yes') {
+          authTemplate = <span>{'Привет, ' + this.state.name}</span>
+        } else if (this.state.isLogged == 'no') {
+          authTemplate = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
         } else {
-          var authTemplate = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
+          authTemplate = <span></span>
         }
         return (
             <nav is class="uk-navbar-container uk-margin-bottom" uk-navbar>

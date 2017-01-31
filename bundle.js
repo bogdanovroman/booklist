@@ -96,7 +96,7 @@
 	            lists: [],
 	            show: 'lists',
 	            user: {},
-	            logged: false
+	            isLogged: ''
 	        };
 	        return _this;
 	    }
@@ -122,16 +122,14 @@
 	                                        id: dataNameId.id,
 	                                        url: dataUrl.data.url
 	                                    },
-	                                    logged: true
+	                                    isLogged: 'yes'
 	                                });
 	                            }.bind(this));
 	                        }.bind(this));
 	                    } else if (response.status === 'not_authorized') {
 	                        this.setState({
-	                            logged: false
+	                            logged: 'no'
 	                        });
-	                    } else {
-	                        // the user isn't logged in to Facebook.
 	                    }
 	                }.bind(this));
 	            }.bind(this);
@@ -160,7 +158,7 @@
 	                                    id: dataNameId.id,
 	                                    url: dataUrl.data.url
 	                                },
-	                                logged: true
+	                                logged: 'yes'
 	                            });
 	                        }.bind(this));
 	                    }.bind(this));
@@ -273,7 +271,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_header2.default, { name: this.state.user.name, url: this.state.user.url, logged: this.state.logged }),
+	                _react2.default.createElement(_header2.default, { name: this.state.user.name, url: this.state.user.url, isLogged: this.state.isLogged }),
 	                data,
 	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })
 	            );
@@ -22865,7 +22863,7 @@
 	        _this.state = {
 	            name: _this.props.name,
 	            url: _this.props.url,
-	            logged: _this.props.logged
+	            isLogged: _this.props.isLogged
 	        };
 	        return _this;
 	    }
@@ -22879,8 +22877,8 @@
 	            if (nextProps.url != this.props.url) {
 	                this.setState({ url: nextProps.url });
 	            }
-	            if (nextProps.logged != this.props.logged) {
-	                this.setState({ logged: nextProps.logged });
+	            if (nextProps.isLogged != this.props.isLogged) {
+	                this.setState({ isLogged: nextProps.isLogged });
 	            }
 	            this.forceUpdate();
 	        }
@@ -22888,18 +22886,20 @@
 	        key: 'render',
 	        value: function render() {
 	            var authTemplate;
-	            if (this.state.logged) {
+	            if (this.state.isLogged == 'yes') {
 	                authTemplate = _react2.default.createElement(
 	                    'span',
 	                    null,
-	                    'Привет ' + this.state.name
+	                    'Привет, ' + this.state.name
 	                );
-	            } else {
-	                var authTemplate = _react2.default.createElement(
+	            } else if (this.state.isLogged == 'no') {
+	                authTemplate = _react2.default.createElement(
 	                    'button',
 	                    { is: true, 'class': 'uk-button uk-button-text', 'uk-toggle': 'target: #modal-example' },
 	                    '\u0432\u043E\u0439\u0442\u0438'
 	                );
+	            } else {
+	                authTemplate = _react2.default.createElement('span', null);
 	            }
 	            return _react2.default.createElement(
 	                'nav',

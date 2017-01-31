@@ -13,7 +13,7 @@ class Container extends React.Component {
             lists: [],
             show: 'lists',
             user: {},
-            logged : false
+            isLogged : ''
         };
     }
     componentDidMount () {
@@ -35,16 +35,14 @@ class Container extends React.Component {
                       id : dataNameId.id,
                       url : dataUrl.data.url,
                     },
-                    logged : true
+                    isLogged : 'yes'
                   })
                 }.bind(this))
               }.bind(this))
             } else if (response.status === 'not_authorized') {
               this.setState({
-                logged : false
+                logged : 'no'
               })
-            } else {
-              // the user isn't logged in to Facebook.
             }
          }.bind(this));
       }.bind(this);
@@ -70,7 +68,7 @@ class Container extends React.Component {
                       id : dataNameId.id,
                       url : dataUrl.data.url,
                     },
-                    logged : true
+                    logged : 'yes'
                   })
                 }.bind(this))
               }.bind(this))
@@ -142,7 +140,7 @@ class Container extends React.Component {
         }
         return (
             <div>
-                <Header name={this.state.user.name} url={this.state.user.url} logged={this.state.logged}/>
+                <Header name={this.state.user.name} url={this.state.user.url} isLogged={this.state.isLogged}/>
                 {data}
                 <Modal onClickHandler={this.authHandler.bind(this)}/>
             </div>
