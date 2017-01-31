@@ -22900,7 +22900,7 @@
 	                            ' ',
 	                            this.state.name
 	                        ),
-	                        _react2.default.createElement('img', { className: 'uk-border-circle', src: this.state.url, width: '50', height: '50' })
+	                        _react2.default.createElement('img', { className: 'uk-border-circle uk-margin-left', src: this.state.url, width: '50', height: '50' })
 	                    )
 	                );
 	            } else if (this.state.isLogged == 'no') {
