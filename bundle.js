@@ -132,8 +132,8 @@
 	                    this.getUserData(function (dataNameId) {
 	                        this.getUserAvatar(function (dataUrl) {
 	                            console.log(dataNameId, dataUrl);
-	                        });
-	                    });
+	                        }.bind(this));
+	                    }.bind(this));
 	                } else if (response.status === 'not_authorized') {
 	                    console.log('The person is logged into Facebook, but not your app.');
 	                }
