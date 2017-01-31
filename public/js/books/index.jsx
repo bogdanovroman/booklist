@@ -12,11 +12,7 @@ class Container extends React.Component {
         this.state = {
             lists: [],
             show: 'lists',
-            user: {
-              "id" : "",
-              "name" : "",
-              "url" : ""
-            },
+            user: {},
         };
     }
     componentDidMount () {
@@ -48,8 +44,9 @@ class Container extends React.Component {
                   if (response && !response.error) {
                       user.id   = response.id;
                       user.name = response.name;
+                    console.log(this, 'component');
                   }
-              });
+              }.bind(this));
               FB.api("/me/picture", function(response) {
                   if (response && !response.error) {
                       user.url = response.data.url;
