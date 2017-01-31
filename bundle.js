@@ -131,7 +131,13 @@
 	                if (response.status === 'connected') {
 	                    this.getUserData(function (dataNameId) {
 	                        this.getUserAvatar(function (dataUrl) {
-	                            console.log(dataNameId, dataUrl);
+	                            this.setState({
+	                                user: {
+	                                    name: dataNameId.name,
+	                                    id: dataNameId.id,
+	                                    url: dataUrl.data.url
+	                                }
+	                            });
 	                        }.bind(this));
 	                    }.bind(this));
 	                } else if (response.status === 'not_authorized') {
