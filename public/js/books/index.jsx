@@ -29,7 +29,6 @@ class Container extends React.Component {
           });
           FB.AppEvents.logPageView();
       };
-
       (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) {
@@ -68,6 +67,7 @@ class Container extends React.Component {
         logged : true
       }, function(){
         this.forceUpdate();
+        this.setStateToLists();
       })
     }
     showDetails(list) {

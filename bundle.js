@@ -116,7 +116,6 @@
 	                });
 	                FB.AppEvents.logPageView();
 	            };
-
 	            (function (d, s, id) {
 	                var js,
 	                    fjs = d.getElementsByTagName(s)[0];
@@ -160,6 +159,7 @@
 	                logged: true
 	            }, function () {
 	                this.forceUpdate();
+	                this.setStateToLists();
 	            });
 	        }
 	    }, {
