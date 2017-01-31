@@ -21797,7 +21797,11 @@
 	      }.bind(this));
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'uk-grid uk-child-width-1-2@s uk-child-width-1-3@m uk-grid-match' },
+	        { is: true,
+	          'class': 'uk-child-width-1-2@s uk-child-width-1-3@m uk-grid-match',
+	          'uk-grid': true, 'uk-height-match': 'target: .uk-card',
+	          id: 'all_lists__wrapper'
+	        },
 	        CardTemplate
 	      );
 	    }
@@ -22682,7 +22686,7 @@
 	                        _react2.default.createElement(
 	                            'button',
 	                            { className: 'uk-button uk-button-default uk-margin-right', type: 'button', onClick: this.backToListsHandler.bind(this) },
-	                            '\u043E\u0445\u0440\u0430\u043D\u0430 \u043E\u0442\u043C\u0435\u043D\u0430 :D'
+	                            '\u041D\u0430\u0437\u0430\u0434'
 	                        ),
 	                        _react2.default.createElement(
 	                            'button',

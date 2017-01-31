@@ -36,7 +36,11 @@ export default class AllLists extends React.Component {
         )
       }.bind(this))
         return (
-          <div className="uk-grid uk-child-width-1-2@s uk-child-width-1-3@m uk-grid-match">
+          <div is
+            class="uk-child-width-1-2@s uk-child-width-1-3@m uk-grid-match"
+            uk-grid uk-height-match="target: .uk-card"
+            id="all_lists__wrapper"
+            >
             {CardTemplate}
           </div>
         )

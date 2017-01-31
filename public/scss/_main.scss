@@ -8,3 +8,14 @@
     width: 50px;
   }
 }
+
+#all_lists__wrapper{
+  .uk-card{
+    &-body{
+      > p{
+        height: 50px;
+        overflow: hidden;
+      }
+    }
+  }
+}
