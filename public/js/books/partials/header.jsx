@@ -26,7 +26,7 @@ export default class Header extends React.Component {
         if (this.state.logged) {
           authTemplate = <span>{'Привет ' + this.state.name}</span>
         } else {
-          var auth = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
+          var authTemplate = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
         }
         return (
             <nav is class="uk-navbar-container uk-margin-bottom" uk-navbar>
@@ -37,7 +37,7 @@ export default class Header extends React.Component {
                 </div>
                 <div className="uk-navbar-right">
                     <div className="uk-navbar-item">
-                        {auth}
+                        {authTemplate}
                     </div>
                 </div>
             </nav>

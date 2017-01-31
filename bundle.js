@@ -22873,7 +22873,7 @@
 	                    'Привет ' + this.state.name
 	                );
 	            } else {
-	                var auth = _react2.default.createElement(
+	                var authTemplate = _react2.default.createElement(
 	                    'button',
 	                    { is: true, 'class': 'uk-button uk-button-text', 'uk-toggle': 'target: #modal-example' },
 	                    '\u0432\u043E\u0439\u0442\u0438'
@@ -22897,7 +22897,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'uk-navbar-item' },
-	                        auth
+	                        authTemplate
 	                    )
 	                )
 	            );
