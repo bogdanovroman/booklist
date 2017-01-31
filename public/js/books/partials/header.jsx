@@ -4,8 +4,8 @@ export default class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name : '',
-            url : ''
+            name: '',
+            url: ''
         };
     }
     componentWillReceiveProps(nextProps) {
@@ -18,26 +18,21 @@ export default class Header extends React.Component {
         this.forceUpdate();
     }
     render() {
-        console.log(this.state.name.length);
-        if (this.state.name.length > 0) {
-          console.log(this.state.name, ' is user');
-          var auth = <div>{this.state.name}</div>
-        } else {
-          var auth = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
-        }
+        var auth = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
+
         return (
-          <nav is class="uk-navbar-container uk-margin-bottom" uk-navbar>
-              <div className="uk-navbar-left">
-                  <a className="uk-navbar-item uk-logo" href="#">
-                    <img is src="public/images/open-book.svg" alt="" />
-                  </a>
-              </div>
-              <div className="uk-navbar-right">
-                <div className="uk-navbar-item">
-                  {auth}
+            <nav is class="uk-navbar-container uk-margin-bottom" uk-navbar>
+                <div className="uk-navbar-left">
+                    <a className="uk-navbar-item uk-logo" href="#">
+                        <img is src="public/images/open-book.svg" alt=""/>
+                    </a>
                 </div>
-              </div>
-          </nav>
+                <div className="uk-navbar-right">
+                    <div className="uk-navbar-item">
+                        {auth}
+                    </div>
+                </div>
+            </nav>
         )
     }
 }

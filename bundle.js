@@ -158,6 +158,8 @@
 	            this.setState({
 	                user: user,
 	                logged: true
+	            }, function () {
+	                console.log(this.state.user);
 	            });
 	        }
 	    }, {
@@ -22856,21 +22858,12 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            console.log(this.state.name.length);
-	            if (this.state.name.length > 0) {
-	                console.log(this.state.name, ' is user');
-	                var auth = _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    this.state.name
-	                );
-	            } else {
-	                var auth = _react2.default.createElement(
-	                    'button',
-	                    { is: true, 'class': 'uk-button uk-button-text', 'uk-toggle': 'target: #modal-example' },
-	                    '\u0432\u043E\u0439\u0442\u0438'
-	                );
-	            }
+	            var auth = _react2.default.createElement(
+	                'button',
+	                { is: true, 'class': 'uk-button uk-button-text', 'uk-toggle': 'target: #modal-example' },
+	                '\u0432\u043E\u0439\u0442\u0438'
+	            );
+
 	            return _react2.default.createElement(
 	                'nav',
 	                { is: true, 'class': 'uk-navbar-container uk-margin-bottom', 'uk-navbar': true },
