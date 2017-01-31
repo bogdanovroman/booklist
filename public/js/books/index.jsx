@@ -13,6 +13,7 @@ class Container extends React.Component {
             lists: [],
             show: 'lists',
             user: {},
+            logged : false
         };
     }
     componentDidMount () {
@@ -45,7 +46,8 @@ class Container extends React.Component {
                     user : {
                       name : dataNameId.name,
                       id : dataNameId.id,
-                      url : dataUrl.data.url
+                      url : dataUrl.data.url,
+                      logged : true
                     }
                   })
                 }.bind(this))
@@ -118,7 +120,7 @@ class Container extends React.Component {
         }
         return (
             <div>
-                <Header name={this.state.user.name} url={this.state.user.url}/>
+                <Header name={this.state.user.name} url={this.state.user.url} logged={this.state.logged}/>
                 {data}
                 <Modal onClickHandler={this.authHandler.bind(this)}/>
             </div>

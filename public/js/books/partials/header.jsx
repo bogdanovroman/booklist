@@ -4,8 +4,9 @@ export default class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            url: ''
+            name: this.props.name,
+            url: this.props.url,
+            logged : this.props.logged
         };
     }
     componentWillReceiveProps(nextProps) {
@@ -18,8 +19,12 @@ export default class Header extends React.Component {
         this.forceUpdate();
     }
     render() {
-        var auth = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
-
+        var authTemplate;
+        if (this.state.logged) {
+          authTemplate = <span>{'Привет ' + this.state.name}</span>
+        } else {
+          var auth = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
+        }
         return (
             <nav is class="uk-navbar-container uk-margin-bottom" uk-navbar>
                 <div className="uk-navbar-left">

@@ -95,7 +95,8 @@
 	        _this.state = {
 	            lists: [],
 	            show: 'lists',
-	            user: {}
+	            user: {},
+	            logged: false
 	        };
 	        return _this;
 	    }
@@ -135,7 +136,8 @@
 	                                user: {
 	                                    name: dataNameId.name,
 	                                    id: dataNameId.id,
-	                                    url: dataUrl.data.url
+	                                    url: dataUrl.data.url,
+	                                    logged: true
 	                                }
 	                            });
 	                        }.bind(this));
@@ -249,7 +251,7 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_header2.default, { name: this.state.user.name, url: this.state.user.url }),
+	                _react2.default.createElement(_header2.default, { name: this.state.user.name, url: this.state.user.url, logged: this.state.logged }),
 	                data,
 	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })
 	            );
@@ -22839,8 +22841,9 @@
 	        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
 
 	        _this.state = {
-	            name: '',
-	            url: ''
+	            name: _this.props.name,
+	            url: _this.props.url,
+	            logged: _this.props.logged
 	        };
 	        return _this;
 	    }
@@ -22859,12 +22862,20 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var auth = _react2.default.createElement(
-	                'button',
-	                { is: true, 'class': 'uk-button uk-button-text', 'uk-toggle': 'target: #modal-example' },
-	                '\u0432\u043E\u0439\u0442\u0438'
-	            );
-
+	            var authTemplate;
+	            if (this.state.logged) {
+	                authTemplate = _react2.default.createElement(
+	                    'span',
+	                    null,
+	                    'Привет ' + this.state.name
+	                );
+	            } else {
+	                var auth = _react2.default.createElement(
+	                    'button',
+	                    { is: true, 'class': 'uk-button uk-button-text', 'uk-toggle': 'target: #modal-example' },
+	                    '\u0432\u043E\u0439\u0442\u0438'
+	                );
+	            }
 	            return _react2.default.createElement(
 	                'nav',
 	                { is: true, 'class': 'uk-navbar-container uk-margin-bottom', 'uk-navbar': true },
