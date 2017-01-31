@@ -22857,6 +22857,9 @@
 	            if (nextProps.url != this.props.url) {
 	                this.setState({ url: nextProps.url });
 	            }
+	            if (nextProps.logged != this.props.logged) {
+	                this.setState({ logged: nextProps.logged });
+	            }
 	            this.forceUpdate();
 	        }
 	    }, {
