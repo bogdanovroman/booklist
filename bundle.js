@@ -22571,7 +22571,7 @@
 	                'title': ''
 	            }],
 	            title: "",
-	            author: "",
+	            author: _this.props.author,
 	            description: ""
 	        };
 	        return _this;

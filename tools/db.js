@@ -2,9 +2,9 @@ var List = require('../models/lists');
 
 var db = {
     getAllLists: function(req, res, callback) {
-        List.find(function(err, result) {
-            if (err) console.error(err);
-            callback(result);
+        List.find({}).sort({date: -1}).exec(function(err,result){
+         if (err) console.error(err);
+             callback(result);
         });
     },
     createNewList: function(req, res, callback){

@@ -12,7 +12,7 @@ export default class NewList extends React.Component {
                 }
             ],
             title: "",
-            author: "",
+            author: this.props.author,
             description: ""
         };
     }
