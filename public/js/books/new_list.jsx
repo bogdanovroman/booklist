@@ -16,6 +16,12 @@ export default class NewList extends React.Component {
             description: ""
         };
     }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.author != this.props.author) {
+            this.setState({author: nextProps.author});
+        }
+        this.forceUpdate();
+    }
     incrementStateItems() {
         var newBooks = this.state.books;
         var obj = {

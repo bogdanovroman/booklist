@@ -95,7 +95,9 @@
 	        _this.state = {
 	            lists: [],
 	            show: 'lists',
-	            user: {},
+	            user: {
+	                name: ''
+	            },
 	            isLogged: ''
 	        };
 	        return _this;
@@ -257,7 +259,7 @@
 	                            { className: 'uk-heading-bullet' },
 	                            '\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043D\u043E\u0432\u044B\u0439'
 	                        ),
-	                        _react2.default.createElement(_new_list2.default, { backToLists: this.setStateToLists.bind(this) })
+	                        _react2.default.createElement(_new_list2.default, { backToLists: this.setStateToLists.bind(this), author: this.state.user.name })
 	                    );
 	                    break;
 	                default:
@@ -22578,6 +22580,14 @@
 	    }
 
 	    _createClass(NewList, [{
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            if (nextProps.author != this.props.author) {
+	                this.setState({ author: nextProps.author });
+	            }
+	            this.forceUpdate();
+	        }
+	    }, {
 	        key: 'incrementStateItems',
 	        value: function incrementStateItems() {
 	            var newBooks = this.state.books;
