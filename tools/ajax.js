@@ -9,6 +9,11 @@ var ajax = {
     db.createNewList(req, res, function(result){
       res.end('list ' + result);
     })
+  },
+  postNewUser: function(req, res){
+    db.createNewUser(req, res, function(result){
+      res.end('user ' + result);
+    })
   }
 }
 

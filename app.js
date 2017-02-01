@@ -38,7 +38,7 @@ app.get('/', render.cleanLayout);
 app.use('/users', users);
 app.get('/all_lists', ajax.getAllLists);
 app.post('/new_list', ajax.postNewList);
-
+app.post('/new_user', ajax.postNewUIser);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
