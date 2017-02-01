@@ -12,7 +12,8 @@ var db = {
       new List({
             title : req.body.title,
             description : req.body.description,
-            items: req.body.books
+            items: req.body.books,
+            author : req.body.author
         }).save(function(err, result) {
             if ( err ) console.error(err);
             callback(result._id);
