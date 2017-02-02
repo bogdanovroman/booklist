@@ -9,12 +9,17 @@ var db = {
         });
     },
     createNewList: function(req, res, callback){
+      console.log('req.body.author.id', req.body.author.id);
       console.log(req.body, ' is new list');
       new List({
             title : req.body.title,
             description : req.body.description,
             items: req.body.books,
-            author : req.body.author
+            author : {
+              name : req.body.author.name,
+              id : req.body.author.id,
+              url : req.body.author.url
+            }
         }).save(function(err, result) {
             if ( err ) console.error(err);
             callback(result._id);
@@ -22,7 +27,7 @@ var db = {
     },
     createNewUser: function(req, res, callback){
         console.log(req.body, ' is new user');
-        new List({
+        new User({
               id : req.body.id,
               name : req.body.name,
               url: req.body.url,

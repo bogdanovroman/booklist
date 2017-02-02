@@ -27,7 +27,7 @@ export default class Card extends React.Component {
                     <div className="uk-card-header">
                         <div className="uk-grid uk-grid-small uk-flex-middle">
                             <div className="uk-width-auto">
-                                <img class="uk-border-circle uk-svg" title={data.author} is uk-tooltip width="40" height="40" src="public/images/user.svg"/>
+                                <img class="uk-border-circle uk-svg" title={data.author.name} is uk-tooltip width="40" height="40" src={data.author.url}/>
                             </div>
                             <div className="uk-width-expand">
                                 <h3 className="uk-card-title uk-margin-remove-bottom">{data.title}</h3>

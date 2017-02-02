@@ -21888,7 +21888,7 @@
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'uk-width-auto' },
-	                                _react2.default.createElement('img', { 'class': 'uk-border-circle uk-svg', title: data.author, is: true, 'uk-tooltip': true, width: '40', height: '40', src: 'public/images/user.svg' })
+	                                _react2.default.createElement('img', { 'class': 'uk-border-circle uk-svg', title: data.author.name, is: true, 'uk-tooltip': true, width: '40', height: '40', src: data.author.url })
 	                            ),
 	                            _react2.default.createElement(
 	                                'div',
