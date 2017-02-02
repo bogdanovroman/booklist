@@ -36,8 +36,8 @@ app.use(express.static(path.join(__dirname, '/')));
 
 app.get('/', render.cleanLayout);
 app.use('/users', users);
-// app.get('/all_lists', ajax.getAllLists);
-app.get('/all_lists', ajax.getAllListsWithUserData);
+app.get('/all_lists', ajax.getAllLists);
+// app.get('/all_lists', ajax.getAllListsWithUserData);
 app.post('/new_list', ajax.postNewList);
 app.post('/new_user', ajax.postNewUser);
 
