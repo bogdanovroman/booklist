@@ -8,7 +8,7 @@ import Modal from './partials/modal.jsx';
 
 class Container extends React.Component {
     constructor(props) {
-        super(props); 
+        super(props);
         this.state = {
             lists: [],
             show: 'lists',
@@ -40,7 +40,7 @@ class Container extends React.Component {
                       url : dataUrl.data.url,
                     },
                     isLogged : 'yes'
-                  })
+                  }, )
                 }.bind(this))
               }.bind(this))
             } else if (response.status === 'not_authorized') {
@@ -73,13 +73,29 @@ class Container extends React.Component {
                       url : dataUrl.data.url,
                     },
                     logged : 'yes'
-                  })
+                  }, this.sendUserData())
                 }.bind(this))
               }.bind(this))
           } else if (response.status === 'not_authorized') {
               console.log('The person is logged into Facebook, but not your app.');
           }
       }.bind(this), {scope: 'public_profile,email'});
+    }
+    sendUserData(){
+      var data = {};
+      data.id = this.state.user.id;
+      data.name = this.state.user.name;
+      data.url = this.state.user.url;
+      $.ajax({
+          url: '/new_user',
+          dataType: 'json',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify(data),
+          complete: function() {
+              console.log('new user data sent to db');
+          }.bind(this)
+      });
     }
     getUserData (callback) {
       FB.api("/me", function(response) {

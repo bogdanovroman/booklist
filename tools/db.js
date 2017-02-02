@@ -33,8 +33,7 @@ var db = {
         new User({
               id : req.body.id,
               name : req.body.name,
-              url: req.body.url,
-              lists : req.body.lists
+              url: req.body.url
           }).save(function(err, result) {
               if ( err ) console.error(err);
               callback(result._id);

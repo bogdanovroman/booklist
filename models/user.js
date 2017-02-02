@@ -12,7 +12,8 @@ var userSchema = new Schema({
         type: String
     },
     lists : {
-      type : Array
+      type : Array,
+      default: []
     }
 });
 
