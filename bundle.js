@@ -100,7 +100,7 @@
 	                id: '',
 	                url: ''
 	            },
-	            isLogged: ''
+	            isLogged: 'no'
 	        };
 	        return _this;
 	    }
