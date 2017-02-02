@@ -13,7 +13,9 @@ class Container extends React.Component {
             lists: [],
             show: 'lists',
             user: {
-              name : ''
+              name : '',
+              id : '',
+              url : ''
             },
             isLogged : ''
         };
@@ -133,7 +135,7 @@ class Container extends React.Component {
                     <h2 className="uk-heading-bullet">
                         Создать новый
                     </h2>
-                    <NewList backToLists={this.setStateToLists.bind(this)} author={this.state.user.name}/>
+                    <NewList backToLists={this.setStateToLists.bind(this)} author={this.state.user}/>
                 </div>
                 break;
             default:

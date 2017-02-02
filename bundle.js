@@ -96,7 +96,9 @@
 	            lists: [],
 	            show: 'lists',
 	            user: {
-	                name: ''
+	                name: '',
+	                id: '',
+	                url: ''
 	            },
 	            isLogged: ''
 	        };
@@ -259,7 +261,7 @@
 	                            { className: 'uk-heading-bullet' },
 	                            '\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043D\u043E\u0432\u044B\u0439'
 	                        ),
-	                        _react2.default.createElement(_new_list2.default, { backToLists: this.setStateToLists.bind(this), author: this.state.user.name })
+	                        _react2.default.createElement(_new_list2.default, { backToLists: this.setStateToLists.bind(this), author: this.state.user })
 	                    );
 	                    break;
 	                default:
