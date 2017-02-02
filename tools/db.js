@@ -3,14 +3,18 @@ var User = require('../models/user');
 
 var db = {
     getAllLists: function(req, res, callback) {
-        List.find({}).sort({date: -1}).exec(function(err,result){
+        List.find({}).sort({date: -1}).exec(function(err,lists){
          if (err) console.error(err);
-             callback(result);
+             callback(lists);
+        });
+    },
+    getAllUsers : function(req, res, callback) {
+        User.find(function(err,users){
+         if (err) console.error(err);
+             callback(users);
         });
     },
     createNewList: function(req, res, callback){
-      console.log('req.body.author.id', req.body.author.id);
-      console.log(req.body, ' is new list');
       new List({
             title : req.body.title,
             description : req.body.description,
@@ -26,7 +30,6 @@ var db = {
         });
     },
     createNewUser: function(req, res, callback){
-        console.log(req.body, ' is new user');
         new User({
               id : req.body.id,
               name : req.body.name,
