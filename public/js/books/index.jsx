@@ -116,7 +116,7 @@ class Container extends React.Component {
     logOut () {
       FB.logout(function(response) {
         this.setState({
-          sLogged : 'no',
+          isLogged : 'no',
           show:'lists'
         })
       }.bind(this));

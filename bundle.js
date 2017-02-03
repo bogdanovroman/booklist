@@ -214,7 +214,7 @@
 	        value: function logOut() {
 	            FB.logout(function (response) {
 	                this.setState({
-	                    sLogged: 'no',
+	                    isLogged: 'no',
 	                    show: 'lists'
 	                });
 	            }.bind(this));
