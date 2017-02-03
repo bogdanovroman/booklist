@@ -120,7 +120,6 @@
 	                    if (response.status === 'connected') {
 	                        this.getUserData(function (dataNameId) {
 	                            this.getUserAvatar(function (dataUrl) {
-	                                console.log(dataNameId);
 	                                this.setState({
 	                                    user: {
 	                                        name: dataNameId.name,
@@ -133,7 +132,7 @@
 	                        }.bind(this));
 	                    } else if (response.status === 'not_authorized') {
 	                        this.setState({
-	                            isLogged: 'no'
+	                            logged: 'no'
 	                        });
 	                    }
 	                }.bind(this));
@@ -163,7 +162,7 @@
 	                                    id: dataNameId.id,
 	                                    url: dataUrl.data.url
 	                                },
-	                                isLogged: 'yes'
+	                                logged: 'yes'
 	                            }, this.sendUserData());
 	                        }.bind(this));
 	                    }.bind(this));
@@ -193,7 +192,6 @@
 	    }, {
 	        key: 'getUserData',
 	        value: function getUserData(callback) {
-	            console.log('get user data method called');
 	            FB.api("/me", function (response) {
 	                if (response && !response.error) {
 	                    callback(response);
@@ -203,18 +201,10 @@
 	    }, {
 	        key: 'getUserAvatar',
 	        value: function getUserAvatar(callback) {
-	            console.log('get user avatar method called');
 	            FB.api("/me/picture", function (response) {
 	                if (response && !response.error) {
 	                    callback(response);
 	                }
-	            });
-	        }
-	    }, {
-	        key: 'logOut',
-	        value: function logOut() {
-	            FB.logout(function (response) {
-	                this.setStateToLists();
 	            });
 	        }
 	    }, {
@@ -306,8 +296,7 @@
 	                _react2.default.createElement(_header2.default, {
 	                    name: this.state.user.name,
 	                    url: this.state.user.url,
-	                    isLogged: this.state.isLogged,
-	                    logOutHandler: this.logOut
+	                    isLogged: this.state.isLogged
 	                }),
 	                data,
 	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })

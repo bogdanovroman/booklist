@@ -33,7 +33,6 @@ class Container extends React.Component {
             if (response.status === 'connected') {
               this.getUserData(function(dataNameId){
                 this.getUserAvatar(function(dataUrl){
-                  console.log(dataNameId);
                   this.setState({
                     user : {
                       name : dataNameId.name,
@@ -41,12 +40,12 @@ class Container extends React.Component {
                       url : dataUrl.data.url,
                     },
                     isLogged : 'yes'
-                  })
+                  }, )
                 }.bind(this))
               }.bind(this))
             } else if (response.status === 'not_authorized') {
               this.setState({
-                isLogged : 'no'
+                logged : 'no'
               })
             }
          }.bind(this));
@@ -73,7 +72,7 @@ class Container extends React.Component {
                       id : dataNameId.id,
                       url : dataUrl.data.url,
                     },
-                    isLogged : 'yes'
+                    logged : 'yes'
                   }, this.sendUserData())
                 }.bind(this))
               }.bind(this))
@@ -99,7 +98,6 @@ class Container extends React.Component {
       });
     }
     getUserData (callback) {
-      console.log('get user data method called');
       FB.api("/me", function(response) {
                   if (response && !response.error) {
                       callback(response);
@@ -107,17 +105,11 @@ class Container extends React.Component {
               });
     }
     getUserAvatar (callback) {
-      console.log('get user avatar method called');
       FB.api("/me/picture", function(response) {
                   if (response && !response.error) {
                       callback(response);
                   }
               });
-    }
-    logOut () {
-      FB.logout(function(response) {
-         this.setStateToLists();
-      });
     }
     showDetails(list) {
         this.setState({show: 'list', list: list})
@@ -172,7 +164,6 @@ class Container extends React.Component {
                   name={this.state.user.name}
                   url={this.state.user.url}
                   isLogged={this.state.isLogged}
-                  logOutHandler={this.logOut}
                   />
                 {data}
                 <Modal onClickHandler={this.authHandler.bind(this)}/>
