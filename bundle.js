@@ -117,10 +117,10 @@
 	                });
 	                FB.AppEvents.logPageView();
 	                FB.getLoginStatus(function (response) {
-	                    console.log('trying to log in from sdk');
 	                    if (response.status === 'connected') {
 	                        this.getUserData(function (dataNameId) {
 	                            this.getUserAvatar(function (dataUrl) {
+	                                console.log(dataNameId);
 	                                this.setState({
 	                                    user: {
 	                                        name: dataNameId.name,
