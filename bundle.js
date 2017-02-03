@@ -165,7 +165,7 @@
 	                                    url: dataUrl.data.url
 	                                },
 	                                isLogged: 'yes'
-	                            }, this.sendUserData());
+	                            }, this.sendUserData().bind(this));
 	                        }.bind(this));
 	                    }.bind(this));
 	                } else if (response.status === 'not_authorized') {
