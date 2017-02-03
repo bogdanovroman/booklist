@@ -11,6 +11,7 @@ export default class List extends React.Component {
         var data = this.state.list;
         var date = this.state.list.date.split('').slice(0, 10).join('').split('-');
         var dateString = date[2] + '.' + date[1] + '.' + date[0];
+        
         var bookTemplate = this.state.list.items.map(function(item, index) {
             return (
               <div className="uk-card uk-card-hover uk-card-body" key={index}>

@@ -43,17 +43,11 @@ var ajax = {
           newList.items = all_lists[i].items;
           newList.description = all_lists[i].description;
           newList.author = all_lists[i].author;
-          console.log(newList.author);
           var newUserData = {};
           for (var j=0; j < all_users.length; j++) {
-            if (newList.author === all_users[j]._id.toString()) {
-//               console.log(newList.author)
+            if (newList.author === all_users[j].id) {
+              console.log(newList.author);
               newUserData = all_users[j];
-            } else {
-              newUserData = {
-                "name" : "default",
-                "url" : "default"
-              };
             }
           }
           newList.userData = {
@@ -62,7 +56,7 @@ var ajax = {
            };
           result.push(newList);
         }
-//         console.log(result)
+        console.log(result);
         res.end( JSON.stringify(result) );
       })
     })
