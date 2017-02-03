@@ -193,6 +193,7 @@
 	    }, {
 	        key: 'getUserData',
 	        value: function getUserData(callback) {
+	            console.log('get user data method called');
 	            FB.api("/me", function (response) {
 	                if (response && !response.error) {
 	                    callback(response);
@@ -202,6 +203,7 @@
 	    }, {
 	        key: 'getUserAvatar',
 	        value: function getUserAvatar(callback) {
+	            console.log('get user avatar method called');
 	            FB.api("/me/picture", function (response) {
 	                if (response && !response.error) {
 	                    callback(response);
