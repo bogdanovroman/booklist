@@ -44,7 +44,7 @@ export default class Header extends React.Component {
         } else if (this.state.isLogged == 'no') {
           authTemplate = <button is class="uk-button uk-button-text" uk-toggle="target: #modal-example">войти</button>
         } else {
-          authTemplate = <span></span>
+          authTemplate = <span>loading</span>
         }
         return (
             <nav is class="uk-navbar-container uk-margin-bottom" uk-navbar>

@@ -22992,7 +22992,11 @@
 	                    '\u0432\u043E\u0439\u0442\u0438'
 	                );
 	            } else {
-	                authTemplate = _react2.default.createElement('span', null);
+	                authTemplate = _react2.default.createElement(
+	                    'span',
+	                    null,
+	                    'loading'
+	                );
 	            }
 	            return _react2.default.createElement(
 	                'nav',
