@@ -127,6 +127,8 @@
 	                                        url: dataUrl.data.url
 	                                    },
 	                                    isLogged: 'yes'
+	                                }, function () {
+	                                    console.log('was already logged');
 	                                });
 	                            }.bind(this));
 	                        }.bind(this));
