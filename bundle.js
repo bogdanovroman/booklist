@@ -213,7 +213,10 @@
 	        key: 'logOut',
 	        value: function logOut() {
 	            FB.logout(function (response) {
-	                this.setStateToLists();
+	                this.setState({
+	                    sLogged: 'no',
+	                    show: 'lists'
+	                });
 	            }.bind(this));
 	        }
 	    }, {
