@@ -160,7 +160,11 @@ class Container extends React.Component {
         }
         return (
             <div>
-                <Header name={this.state.user.name} url={this.state.user.url} isLogged={this.state.isLogged}/>
+                <Header
+                  name={this.state.user.name}
+                  url={this.state.user.url}
+                  isLogged={this.state.isLogged}
+                  />
                 {data}
                 <Modal onClickHandler={this.authHandler.bind(this)}/>
             </div>

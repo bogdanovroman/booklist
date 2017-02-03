@@ -12,8 +12,7 @@ var listSchema = new Schema({
 //           id : '',
 //           url : ''
 //         }
-      type: String,
-      default: "5893a5a359b61f001167d1f1"
+      type: String
     },
     description: {
         type: String,

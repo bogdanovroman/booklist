@@ -293,7 +293,11 @@
 	            return _react2.default.createElement(
 	                'div',
 	                null,
-	                _react2.default.createElement(_header2.default, { name: this.state.user.name, url: this.state.user.url, isLogged: this.state.isLogged }),
+	                _react2.default.createElement(_header2.default, {
+	                    name: this.state.user.name,
+	                    url: this.state.user.url,
+	                    isLogged: this.state.isLogged
+	                }),
 	                data,
 	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })
 	            );
@@ -22935,7 +22939,12 @@
 	                            { className: 'uk-text-middle' },
 	                            this.state.name
 	                        ),
-	                        _react2.default.createElement('img', { className: 'uk-border-circle uk-margin-left', src: this.state.url, width: '50', height: '50' })
+	                        _react2.default.createElement('img', { className: 'uk-border-circle uk-margin-left', src: this.state.url, width: '50', height: '50' }),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { 'uk-dropdown': 'mode: click' },
+	                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'
+	                        )
 	                    )
 	                );
 	            } else if (this.state.isLogged == 'no') {
