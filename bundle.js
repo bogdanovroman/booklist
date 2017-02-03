@@ -117,6 +117,7 @@
 	                });
 	                FB.AppEvents.logPageView();
 	                FB.getLoginStatus(function (response) {
+	                    console.log('trying to log in from sdk');
 	                    if (response.status === 'connected') {
 	                        this.getUserData(function (dataNameId) {
 	                            this.getUserAvatar(function (dataUrl) {
@@ -127,8 +128,6 @@
 	                                        url: dataUrl.data.url
 	                                    },
 	                                    isLogged: 'yes'
-	                                }, function () {
-	                                    console.log('was already logged');
 	                                });
 	                            }.bind(this));
 	                        }.bind(this));
