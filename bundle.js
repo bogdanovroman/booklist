@@ -208,6 +208,13 @@
 	            });
 	        }
 	    }, {
+	        key: 'logOut',
+	        value: function logOut() {
+	            FB.logout(function (response) {
+	                console.log('User is logged out');
+	            });
+	        }
+	    }, {
 	        key: 'showDetails',
 	        value: function showDetails(list) {
 	            this.setState({ show: 'list', list: list });
@@ -296,7 +303,8 @@
 	                _react2.default.createElement(_header2.default, {
 	                    name: this.state.user.name,
 	                    url: this.state.user.url,
-	                    isLogged: this.state.isLogged
+	                    isLogged: this.state.isLogged,
+	                    logOutHandler: this.logOut
 	                }),
 	                data,
 	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })
@@ -22924,6 +22932,11 @@
 	            this.forceUpdate();
 	        }
 	    }, {
+	        key: 'logOutHandler',
+	        value: function logOutHandler() {
+	            this.props.logOutHandler();
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var authTemplate;
@@ -22963,7 +22976,7 @@
 	                                        null,
 	                                        _react2.default.createElement(
 	                                            'a',
-	                                            { href: '#' },
+	                                            { href: 'javascript:void(0);', onClick: this.logOutHandler.bind(this) },
 	                                            '\u0412\u044B\u0439\u0442\u0438'
 	                                        )
 	                                    )

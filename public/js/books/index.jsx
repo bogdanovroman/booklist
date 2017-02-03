@@ -111,6 +111,11 @@ class Container extends React.Component {
                   }
               });
     }
+    logOut () {
+      FB.logout(function(response) {
+         console.log('User is logged out');
+      });
+    }
     showDetails(list) {
         this.setState({show: 'list', list: list})
     }
@@ -164,6 +169,7 @@ class Container extends React.Component {
                   name={this.state.user.name}
                   url={this.state.user.url}
                   isLogged={this.state.isLogged}
+                  logOutHandler={this.logOut}
                   />
                 {data}
                 <Modal onClickHandler={this.authHandler.bind(this)}/>

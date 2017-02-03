@@ -21,6 +21,9 @@ export default class Header extends React.Component {
         }
         this.forceUpdate();
     }
+    logOutHandler () {
+      this.props.logOutHandler();
+    }
     render() {
         var authTemplate;
         if (this.state.isLogged == 'yes') {
@@ -32,7 +35,7 @@ export default class Header extends React.Component {
                                 <div is uk-dropdown="pos: bottom-right">
                                     <ul className="uk-nav uk-dropdown-nav">
                                         <li><a href="#">Какая-то ссылка</a></li>
-                                        <li><a href="#">Выйти</a></li>
+                                        <li><a href="javascript:void(0);" onClick={this.logOutHandler.bind(this)}>Выйти</a></li>
                                     </ul>
                                 </div>
                               </div>
