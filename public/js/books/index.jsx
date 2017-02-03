@@ -17,7 +17,7 @@ class Container extends React.Component {
               id : '',
               url : ''
             },
-            isLogged : 'no'
+            isLogged : ''
         };
     }
     componentDidMount () {
@@ -100,7 +100,6 @@ class Container extends React.Component {
       });
     }
     getUserData (callback) {
-      console.log('get user data method called');
       FB.api("/me", function(response) {
                   if (response && !response.error) {
                       callback(response);
@@ -108,7 +107,6 @@ class Container extends React.Component {
               });
     }
     getUserAvatar (callback) {
-      console.log('get user avatar method called');
       FB.api("/me/picture", function(response) {
                   if (response && !response.error) {
                       callback(response);
@@ -118,7 +116,7 @@ class Container extends React.Component {
     logOut () {
       FB.logout(function(response) {
          this.setStateToLists();
-      });
+      }.bind(this));
     }
     showDetails(list) {
         this.setState({show: 'list', list: list})
