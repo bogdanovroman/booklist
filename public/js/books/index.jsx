@@ -87,11 +87,9 @@ class Container extends React.Component {
     }
     sendUserData(){
       var data = {};
-      console.log(this.state);
       data.id = this.state.user.id;
       data.name = this.state.user.name;
       data.url = this.state.user.url;
-      console.log(data);
       $.ajax({
           url: '/new_user',
           dataType: 'json',

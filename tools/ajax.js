@@ -16,9 +16,20 @@ var ajax = {
     })
   },
   postNewUser: function(req, res){
-    db.createNewUser(req, res, function(result){
-      res.end('user ' + result);
+    db.getAllUsers(req,res,function(all_users){
+      var isNew = false;
+      for (var i = 0; i < all_users.length; i++) {
+        if (req.body.id != all_users[i].id) {
+          isNew = true;
+        }
+      }
+      if (isNew) {
+        db.createNewUser(req, res, function(result){
+          res.end('user ' + result);
+        })
+      }
     })
+
   },
   getAllListsWithUserData: function(req, res){
     db.getAllLists(req,res,function(all_lists){
