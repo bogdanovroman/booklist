@@ -22945,7 +22945,7 @@
 	                            _react2.default.createElement('img', { className: 'uk-border-circle uk-margin-left', src: this.state.url, width: '50', height: '50' }),
 	                            _react2.default.createElement(
 	                                'div',
-	                                { is: true, 'uk-dropdown': 'mode: click, pos: bbottom-right' },
+	                                { is: true, 'uk-dropdown': 'mode: click, pos: bottom-right' },
 	                                _react2.default.createElement(
 	                                    'ul',
 	                                    { className: 'uk-nav uk-dropdown-nav' },
