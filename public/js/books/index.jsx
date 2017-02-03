@@ -43,7 +43,7 @@ class Container extends React.Component {
                   }, )
                 }.bind(this))
               }.bind(this))
-            } else if (response.status === 'not_authorized') {
+            } else {
               this.setState({
                 logged : 'no'
               })
