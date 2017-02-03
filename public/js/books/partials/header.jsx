@@ -29,15 +29,10 @@ export default class Header extends React.Component {
                               <span className="uk-text-middle">{this.state.name}</span>
                               <div className="uk-inline">
                                 <img className="uk-border-circle uk-margin-left" src={this.state.url} width="50" height="50"/>
-                                <div is uk-dropdown>
+                                <div is uk-dropdown="mode: click, pos: bottom-justify">
                                     <ul className="uk-nav uk-dropdown-nav">
-                                        <li className="uk-active"><a href="#">Active</a></li>
-                                        <li><a href="#">Item</a></li>
-                                        <li className="uk-nav-header">Header</li>
-                                        <li><a href="#">Item</a></li>
-                                        <li><a href="#">Item</a></li>
-                                        <li className="uk-nav-divider"></li>
-                                        <li><a href="#">Item</a></li>
+                                        <li><a href="#">Какая-то ссылка</a></li>
+                                        <li><a href="#">Выйти</a></li>
                                     </ul>
                                 </div>
                               </div>

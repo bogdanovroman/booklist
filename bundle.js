@@ -22945,17 +22945,17 @@
 	                            _react2.default.createElement('img', { className: 'uk-border-circle uk-margin-left', src: this.state.url, width: '50', height: '50' }),
 	                            _react2.default.createElement(
 	                                'div',
-	                                { is: true, 'uk-dropdown': true },
+	                                { is: true, 'uk-dropdown': 'mode: click, pos: bottom-justify' },
 	                                _react2.default.createElement(
 	                                    'ul',
 	                                    { className: 'uk-nav uk-dropdown-nav' },
 	                                    _react2.default.createElement(
 	                                        'li',
-	                                        { className: 'uk-active' },
+	                                        null,
 	                                        _react2.default.createElement(
 	                                            'a',
 	                                            { href: '#' },
-	                                            'Active'
+	                                            '\u041A\u0430\u043A\u0430\u044F-\u0442\u043E \u0441\u0441\u044B\u043B\u043A\u0430'
 	                                        )
 	                                    ),
 	                                    _react2.default.createElement(
@@ -22964,40 +22964,7 @@
 	                                        _react2.default.createElement(
 	                                            'a',
 	                                            { href: '#' },
-	                                            'Item'
-	                                        )
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'li',
-	                                        { className: 'uk-nav-header' },
-	                                        'Header'
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'li',
-	                                        null,
-	                                        _react2.default.createElement(
-	                                            'a',
-	                                            { href: '#' },
-	                                            'Item'
-	                                        )
-	                                    ),
-	                                    _react2.default.createElement(
-	                                        'li',
-	                                        null,
-	                                        _react2.default.createElement(
-	                                            'a',
-	                                            { href: '#' },
-	                                            'Item'
-	                                        )
-	                                    ),
-	                                    _react2.default.createElement('li', { className: 'uk-nav-divider' }),
-	                                    _react2.default.createElement(
-	                                        'li',
-	                                        null,
-	                                        _react2.default.createElement(
-	                                            'a',
-	                                            { href: '#' },
-	                                            'Item'
+	                                            '\u0412\u044B\u0439\u0442\u0438'
 	                                        )
 	                                    )
 	                                )
