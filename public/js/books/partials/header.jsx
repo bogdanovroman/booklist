@@ -25,7 +25,7 @@ export default class Header extends React.Component {
         var authTemplate;
         if (this.state.isLogged == 'yes') {
           authTemplate =  <ul className="uk-navbar-nav">
-                            <li>
+                            <li className="uk-inline"> 
                               <span className="uk-text-middle">{this.state.name}</span>
                               <img className="uk-border-circle uk-margin-left" src={this.state.url} width="50" height="50"/>
                               <div uk-dropdown="mode: click">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div>
