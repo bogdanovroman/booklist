@@ -17,7 +17,7 @@ class Container extends React.Component {
               id : '',
               url : ''
             },
-            isLogged : ''
+            isLogged : 'no'
         };
     }
     componentDidMount () {
