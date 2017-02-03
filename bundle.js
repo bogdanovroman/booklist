@@ -100,7 +100,7 @@
 	                id: '',
 	                url: ''
 	            },
-	            isLogged: ''
+	            isLogged: 'no'
 	        };
 	        return _this;
 	    }
@@ -130,7 +130,7 @@
 	                                });
 	                            }.bind(this));
 	                        }.bind(this));
-	                    } else {
+	                    } else if (response.status === 'not_authorized') {
 	                        this.setState({
 	                            logged: 'no'
 	                        });

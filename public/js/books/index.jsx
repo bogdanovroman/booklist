@@ -17,7 +17,7 @@ class Container extends React.Component {
               id : '',
               url : ''
             },
-            isLogged : ''
+            isLogged : 'no'
         };
     }
     componentDidMount () {
@@ -43,7 +43,7 @@ class Container extends React.Component {
                   }, )
                 }.bind(this))
               }.bind(this))
-            } else {
+            } else if (response.status === 'not_authorized') {
               this.setState({
                 logged : 'no'
               })
