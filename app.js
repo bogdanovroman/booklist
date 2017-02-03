@@ -8,8 +8,6 @@ var mongoose = require('mongoose');
 var engine = require('ejs-locals');
 
 mongoose.Promise = global.Promise;
-// mongoose.connect('mongodb://admin:admin@ds035776.mlab.com:35776/rbogdanov_users');
-// mongoose.connect('mongodb://admin:admin@ds059375.mongolab.com:59375/buy_list');
 mongoose.connect('mongodb://admin:admin@ds129179.mlab.com:29179/rbogdanov');
 mongoose.connection.on('connected', function () {
     console.log('connected to db');
