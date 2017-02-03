@@ -306,7 +306,7 @@
 	                    name: this.state.user.name,
 	                    url: this.state.user.url,
 	                    isLogged: this.state.isLogged,
-	                    logOutHandler: this.logOut
+	                    logOutHandler: this.logOut.bind(this)
 	                }),
 	                data,
 	                _react2.default.createElement(_modal2.default, { onClickHandler: this.authHandler.bind(this) })

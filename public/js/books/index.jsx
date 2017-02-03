@@ -171,7 +171,7 @@ class Container extends React.Component {
                   name={this.state.user.name}
                   url={this.state.user.url}
                   isLogged={this.state.isLogged}
-                  logOutHandler={this.logOut}
+                  logOutHandler={this.logOut.bind(this)}
                   />
                 {data}
                 <Modal onClickHandler={this.authHandler.bind(this)}/>
