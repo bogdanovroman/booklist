@@ -132,7 +132,7 @@
 	                                });
 	                            }.bind(this));
 	                        }.bind(this));
-	                    } else if (response.status === 'not_authorized') {
+	                    } else {
 	                        this.setState({
 	                            isLogged: 'no'
 	                        });
