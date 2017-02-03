@@ -293,7 +293,7 @@
 	                            { className: 'uk-heading-bullet' },
 	                            '\u0421\u043E\u0437\u0434\u0430\u0442\u044C \u043D\u043E\u0432\u044B\u0439'
 	                        ),
-	                        _react2.default.createElement(_new_list2.default, { backToLists: this.setStateToLists.bind(this), author: this.state.user })
+	                        _react2.default.createElement(_new_list2.default, { backToLists: this.setStateToLists.bind(this), author: this.state.user.id })
 	                    );
 	                    break;
 	                default:
@@ -21910,7 +21910,6 @@
 	        key: 'render',
 	        value: function render() {
 	            var data = this.state.list;
-	            console.log(data);
 	            var date = this.state.list.date.split('').slice(0, 10).join('').split('-');
 	            var dateString = date[2] + '.' + date[1] + '.' + date[0];
 	            return _react2.default.createElement(

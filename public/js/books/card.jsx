@@ -18,7 +18,6 @@ export default class Card extends React.Component {
     }
     render() {
         var data = this.state.list;
-      console.log(data)
         var date = this.state.list.date.split('').slice(0, 10).join('').split('-');
         var dateString = date[2] + '.' + date[1] + '.' + date[0];
         return (

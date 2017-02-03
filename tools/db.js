@@ -19,11 +19,7 @@ var db = {
             title : req.body.title,
             description : req.body.description,
             items: req.body.books,
-            author : {
-              name : req.body.author.name,
-              id : req.body.author.id,
-              url : req.body.author.url
-            }
+            author : req.body.author
         }).save(function(err, result) {
             if ( err ) console.error(err);
             callback(result._id);

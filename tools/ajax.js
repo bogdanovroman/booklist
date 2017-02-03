@@ -33,7 +33,6 @@ var ajax = {
   },
   getAllListsWithUserData: function(req, res){
     db.getAllLists(req,res,function(all_lists){
-      console.log(all_lists);
       db.getAllUsers(req,res,function(all_users){
         var result = [];
         for (var i=0; i < all_lists.length; i++) {
@@ -44,7 +43,7 @@ var ajax = {
           newList.items = all_lists[i].items;
           newList.description = all_lists[i].description;
           newList.author = all_lists[i].author;
-          // console.log(newList.author);
+          console.log(newList.author);
           var newUserData = {};
           for (var j=0; j < all_users.length; j++) {
             if (newList.author === all_users[j]._id.toString()) {

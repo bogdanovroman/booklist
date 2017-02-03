@@ -163,7 +163,7 @@ class Container extends React.Component {
                     <h2 className="uk-heading-bullet">
                         Создать новый
                     </h2>
-                    <NewList backToLists={this.setStateToLists.bind(this)} author={this.state.user}/>
+                    <NewList backToLists={this.setStateToLists.bind(this)} author={this.state.user.id}/>
                 </div>
                 break;
             default:

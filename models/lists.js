@@ -6,12 +6,6 @@ var listSchema = new Schema({
         type: String
     },
     author: {
-//         type: Object,
-//         default : {
-//           name : '',
-//           id : '',
-//           url : ''
-//         }
       type: String
     },
     description: {
