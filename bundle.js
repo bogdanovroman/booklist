@@ -165,7 +165,9 @@
 	                                    url: dataUrl.data.url
 	                                },
 	                                isLogged: 'yes'
-	                            }, this.sendUserData().bind(this));
+	                            }, function () {
+	                                this.sendUserData();
+	                            });
 	                        }.bind(this));
 	                    }.bind(this));
 	                } else if (response.status === 'not_authorized') {
@@ -177,6 +179,7 @@
 	        key: 'sendUserData',
 	        value: function sendUserData() {
 	            var data = {};
+	            console.log(this.state);
 	            data.id = this.state.user.id;
 	            data.name = this.state.user.name;
 	            data.url = this.state.user.url;
