@@ -23,8 +23,36 @@ var ajax = {
   getAllListsWithUserData: function(req, res){
     db.getAllLists(req,res,function(all_lists){
       db.getAllUsers(req,res,function(all_users){
-//         res.end( JSON.stringify(all_users) );
-        console.log(JSON.stringify(all_lists), JSON.stringify(all_users));
+        var result = [];
+        for (var i=0; i < all_lists.length; i++) {
+          var newList = {};
+          newList._id = all_lists[i]._id;
+          newList.title = all_lists[i].title;
+          newList.date = all_lists[i].date;
+          newList.items = all_lists[i].items;
+          newList.description = all_lists[i].description;
+          newList.author = all_lists[i].author;
+          console.log(newList.author)
+          var newUserData = {};
+          for (var j=0; j < all_users.length; j++) {
+            if (newList.author === all_users[j]._id.toString()) {
+//               console.log(newList.author)
+              newUserData = all_users[j];
+            } else {
+              newUserData = {
+                "name" : "default",
+                "url" : "default"
+              };
+            }
+          }
+          newList.userData = {
+                "name" : newUserData.name,
+                "url" : newUserData.url
+           };
+          result.push(newList);
+        }
+//         console.log(result)
+        res.end( JSON.stringify(result) );
       })
     })
   }

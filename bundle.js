@@ -21796,6 +21796,8 @@
 	      }).then(function (json) {
 	        this.setState({
 	          lists: json
+	        }, function () {
+	          console.log(this.state.lists);
 	        });
 	      }.bind(this));
 	    }
@@ -21889,6 +21891,7 @@
 	        key: 'render',
 	        value: function render() {
 	            var data = this.state.list;
+	            console.log(data);
 	            var date = this.state.list.date.split('').slice(0, 10).join('').split('-');
 	            var dateString = date[2] + '.' + date[1] + '.' + date[0];
 	            return _react2.default.createElement(
@@ -21906,7 +21909,7 @@
 	                            _react2.default.createElement(
 	                                'div',
 	                                { className: 'uk-width-auto' },
-	                                _react2.default.createElement('img', { 'class': 'uk-border-circle uk-svg', title: data.author.name, is: true, 'uk-tooltip': true, width: '40', height: '40', src: data.author.url })
+	                                _react2.default.createElement('img', { 'class': 'uk-border-circle uk-svg', title: data.userData.name, is: true, 'uk-tooltip': true, width: '40', height: '40', src: data.userData.url })
 	                            ),
 	                            _react2.default.createElement(
 	                                'div',

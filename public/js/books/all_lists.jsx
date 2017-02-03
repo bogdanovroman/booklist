@@ -19,6 +19,8 @@ export default class AllLists extends React.Component {
         .then(function (json) {
           this.setState({
             lists : json
+          }, function(){
+            console.log(this.state.lists);
           })
         }.bind(this));
     }
