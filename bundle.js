@@ -211,7 +211,7 @@
 	        key: 'logOut',
 	        value: function logOut() {
 	            FB.logout(function (response) {
-	                console.log('User is logged out');
+	                this.setStateToLists();
 	            });
 	        }
 	    }, {

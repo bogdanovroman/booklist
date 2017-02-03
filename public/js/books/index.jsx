@@ -113,7 +113,7 @@ class Container extends React.Component {
     }
     logOut () {
       FB.logout(function(response) {
-         console.log('User is logged out');
+         this.setStateToLists();
       });
     }
     showDetails(list) {
