@@ -25,10 +25,22 @@ export default class Header extends React.Component {
         var authTemplate;
         if (this.state.isLogged == 'yes') {
           authTemplate =  <ul className="uk-navbar-nav">
-                            <li className="uk-inline"> 
+                            <li className="uk-inline">
                               <span className="uk-text-middle">{this.state.name}</span>
-                              <img className="uk-border-circle uk-margin-left" src={this.state.url} width="50" height="50"/>
-                              <div uk-dropdown="mode: click">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div>
+                              <div className="uk-inline">
+                                <img className="uk-border-circle uk-margin-left" src={this.state.url} width="50" height="50"/>
+                                <div is uk-dropdown>
+                                    <ul className="uk-nav uk-dropdown-nav">
+                                        <li className="uk-active"><a href="#">Active</a></li>
+                                        <li><a href="#">Item</a></li>
+                                        <li className="uk-nav-header">Header</li>
+                                        <li><a href="#">Item</a></li>
+                                        <li><a href="#">Item</a></li>
+                                        <li className="uk-nav-divider"></li>
+                                        <li><a href="#">Item</a></li>
+                                    </ul>
+                                </div>
+                              </div>
                              </li>
                         </ul>
         } else if (this.state.isLogged == 'no') {

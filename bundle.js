@@ -22933,17 +22933,75 @@
 	                    { className: 'uk-navbar-nav' },
 	                    _react2.default.createElement(
 	                        'li',
-	                        null,
+	                        { className: 'uk-inline' },
 	                        _react2.default.createElement(
 	                            'span',
 	                            { className: 'uk-text-middle' },
 	                            this.state.name
 	                        ),
-	                        _react2.default.createElement('img', { className: 'uk-border-circle uk-margin-left', src: this.state.url, width: '50', height: '50' }),
 	                        _react2.default.createElement(
 	                            'div',
-	                            { 'uk-dropdown': 'mode: click' },
-	                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.'
+	                            { className: 'uk-inline' },
+	                            _react2.default.createElement('img', { className: 'uk-border-circle uk-margin-left', src: this.state.url, width: '50', height: '50' }),
+	                            _react2.default.createElement(
+	                                'div',
+	                                { is: true, 'uk-dropdown': true },
+	                                _react2.default.createElement(
+	                                    'ul',
+	                                    { className: 'uk-nav uk-dropdown-nav' },
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        { className: 'uk-active' },
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'Active'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'Item'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        { className: 'uk-nav-header' },
+	                                        'Header'
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'Item'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'Item'
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement('li', { className: 'uk-nav-divider' }),
+	                                    _react2.default.createElement(
+	                                        'li',
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            'a',
+	                                            { href: '#' },
+	                                            'Item'
+	                                        )
+	                                    )
+	                                )
+	                            )
 	                        )
 	                    )
 	                );
